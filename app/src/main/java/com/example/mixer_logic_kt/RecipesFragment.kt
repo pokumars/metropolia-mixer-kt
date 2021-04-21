@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.mixer_logic_kt.databinding.FragmentRecipesBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -43,6 +44,14 @@ class RecipesFragment : Fragment() {
         _binding = FragmentRecipesBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.toFavesBtn.setOnClickListener{
+            val action = RecipesFragmentDirections.actionRecipesFragmentToFavoritesFragment()
+            binding.root.findNavController().navigate(action)
+        }
     }
 
     override fun onDestroyView() {

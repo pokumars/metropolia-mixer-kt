@@ -51,6 +51,11 @@ class StartupFragment : Fragment() {
             val action = StartupFragmentDirections.actionStartupFragmentToLoginFragment()
             binding.root.findNavController().navigate(action)
         }
+
+        binding.toRegisterBtn.setOnClickListener{
+            val action = StartupFragmentDirections.actionStartupFragmentToRegisterFragment()
+            binding.root.findNavController().navigate(action)
+        }
     }
 
     override fun onDestroyView() {

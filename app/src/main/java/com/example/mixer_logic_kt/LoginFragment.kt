@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.mixer_logic_kt.databinding.FragmentLoginBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -46,6 +47,11 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.loginBtn.setOnClickListener{
+            val action = LoginFragmentDirections.actionLoginFragmentToRecipesFragment()
+            binding.root.findNavController().navigate(action)
+        }
     }
 
     override fun onDestroyView() {
