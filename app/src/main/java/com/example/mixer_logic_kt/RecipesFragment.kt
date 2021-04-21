@@ -21,7 +21,7 @@ class RecipesFragment : Fragment() {
 
     private var _binding : FragmentRecipesBinding? = null
 
-    private val binding = _binding!!
+    private val binding get() = _binding!!
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -43,6 +43,11 @@ class RecipesFragment : Fragment() {
         _binding = FragmentRecipesBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     companion object {

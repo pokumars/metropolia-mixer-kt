@@ -21,7 +21,7 @@ class RegisterFragment : Fragment() {
 
     private var _binding : FragmentRegisterBinding? = null
 
-    private val binding = _binding!!
+    private val binding get() = _binding!!
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -46,6 +46,11 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     companion object {
