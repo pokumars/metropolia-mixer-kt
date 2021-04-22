@@ -2,6 +2,7 @@
     <string name="app_name">Mixer Logic</string>
     <string name="register_fragment_label">Register</string>
     <string name="sign_up_fragment_label">Sign Up</string>
+    <string name="sign_in_fragment_label">Sign In</string>
     <string name="favourites_fragment_label">Favourites</string>
     <string name="profile_fragment_label">Profile</string>
     <string name="recipes_fragment_label">Recipes</string>

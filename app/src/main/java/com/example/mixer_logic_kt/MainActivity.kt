@@ -1,6 +1,7 @@
 package com.example.mixer_logic_kt
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -25,6 +26,14 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController)
 
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController)
+
+        navController.addOnDestinationChangedListener{_, destination, _ ->
+            if(destination.id == R.id.signInFragment ||  destination.id == R.id.startupFragment || destination.id == R.id.registerFragment ){
+                binding.bottomNavigationView.visibility = View.GONE
+            }else{
+                binding.bottomNavigationView.visibility = View.VISIBLE
+            }
+        }
 
     }
 

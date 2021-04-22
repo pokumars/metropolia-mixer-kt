@@ -47,8 +47,8 @@ class StartupFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
-        binding.toLoginBtn.setOnClickListener{
-            val action = StartupFragmentDirections.actionStartupFragmentToLoginFragment()
+        binding.toSignInBtn.setOnClickListener{
+            val action = StartupFragmentDirections.actionStartupFragmentToSignInFragment()
             binding.root.findNavController().navigate(action)
         }
 
