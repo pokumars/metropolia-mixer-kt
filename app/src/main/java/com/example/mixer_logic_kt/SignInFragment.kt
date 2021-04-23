@@ -48,7 +48,11 @@ class SignInFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.signInBtn.setOnClickListener{
-            val action = SignInFragmentDirections.actionSignInFragmentToAllDrinksFragment()
+            val action = SignInFragmentDirections.actionSignInFragmentToRecipesTab()
+            binding.root.findNavController().navigate(action)
+        }
+        binding.forgotPasswordBtn.setOnClickListener{
+            val action = SignInFragmentDirections.actionSignInFragmentToForgotPasswordFragment()
             binding.root.findNavController().navigate(action)
         }
     }

@@ -5,6 +5,7 @@
     <string name="sign_in_fragment_label">Sign In</string>
     <string name="favourites_fragment_label">Favourites</string>
     <string name="profile_fragment_label">Profile</string>
+    <string name="forgot_password_fragment_label">Forgot Password</string>
     <string name="recipes_fragment_label">Recipes</string>
     <string name="recipe_fragment_label">{recipeName}</string>
     <string name="recipes_tab_label">Recipes</string>

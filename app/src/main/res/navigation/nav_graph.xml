@@ -23,31 +23,60 @@
         android:label="@string/register_fragment_label"
         tools:layout="@layout/fragment_register"/>
     <fragment
-        android:id="@+id/favoritesFragment"
-        android:name="com.example.mixer_logic_kt.FavoritesFragment"
-        android:label="@string/favourites_fragment_label"
-        tools:layout="@layout/fragment_favorites" />
-    <fragment
         android:id="@+id/signInFragment"
         android:name="com.example.mixer_logic_kt.SignInFragment"
         android:label="@string/sign_in_fragment_label"
         tools:layout="@layout/fragment_sign_in">
         <action
-            android:id="@+id/action_signInFragment_to_allDrinksFragment"
-            app:destination="@id/allDrinksFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/allDrinksFragment"
-        android:name="com.example.mixer_logic_kt.AllDrinksFragment"
-        android:label="@string/recipes_fragment_label"
-        tools:layout="@layout/fragment_all_drinks">
+            android:id="@+id/action_signInFragment_to_recipes_tab"
+            app:destination="@id/recipes_tab" />
         <action
-            android:id="@+id/action_allDrinksFragment_to_favoritesFragment"
-            app:destination="@id/favoritesFragment" />
+            android:id="@+id/action_signInFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
     </fragment>
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.example.mixer_logic_kt.ProfileFragment"
-        android:label="@string/profile_fragment_label"
-        tools:layout="@layout/fragment_profile" />
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.example.mixer_logic_kt.ForgotPasswordFragment"
+        android:label="@string/forgot_password_fragment_label"
+        tools:layout="@layout/fragment_forgot_password" >
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_signInFragment"
+            app:destination="@id/signInFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/signInFragment"/>
+    </fragment>
+    <navigation android:id="@+id/recipes_tab"
+        app:startDestination="@id/allDrinksFragment">
+        <fragment
+            android:id="@+id/allDrinksFragment"
+            android:name="com.example.mixer_logic_kt.AllDrinksFragment"
+            android:label="@string/recipes_fragment_label"
+            tools:layout="@layout/fragment_all_drinks" />
+        <fragment
+            android:id="@+id/drinkRecipeFragment"
+            android:name="com.example.mixer_logic_kt.DrinkRecipeFragment"
+            android:label="Drink Name"
+            tools:layout="@layout/fragment_drink_recipe" />
+    </navigation>
+    <navigation android:id="@+id/favourites_tab"
+        app:startDestination="@id/favoritesFragment">
+        <fragment
+            android:id="@+id/favoritesFragment"
+            android:name="com.example.mixer_logic_kt.FavoritesFragment"
+            android:label="@string/favourites_fragment_label"
+            tools:layout="@layout/fragment_favorites" />
+        <fragment
+            android:id="@+id/drinkRecipeFragment2"
+            android:name="com.example.mixer_logic_kt.DrinkRecipeFragment"
+            android:label="fragment_drink_recipe"
+            tools:layout="@layout/fragment_drink_recipe" />
+    </navigation>
+    <navigation android:id="@+id/profile_tab"
+        app:startDestination="@id/profileFragment">
+        <fragment
+            android:id="@+id/profileFragment"
+            android:name="com.example.mixer_logic_kt.ProfileFragment"
+            android:label="@string/profile_fragment_label"
+            tools:layout="@layout/fragment_profile" />
+    </navigation>
 </navigation>

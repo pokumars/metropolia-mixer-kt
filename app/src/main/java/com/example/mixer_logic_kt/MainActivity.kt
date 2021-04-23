@@ -28,13 +28,12 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController)
 
         navController.addOnDestinationChangedListener{_, destination, _ ->
-            if(destination.id == R.id.signInFragment ||  destination.id == R.id.startupFragment || destination.id == R.id.registerFragment ){
+            if(destination.id == R.id.signInFragment ||  destination.id == R.id.startupFragment || destination.id == R.id.registerFragment || destination.id == R.id.forgotPasswordFragment ){
                 binding.bottomNavigationView.visibility = View.GONE
             }else{
                 binding.bottomNavigationView.visibility = View.VISIBLE
             }
         }
-
     }
 
     override fun onSupportNavigateUp(): Boolean {
