@@ -51,7 +51,11 @@
             android:id="@+id/allDrinksFragment"
             android:name="com.example.mixer_logic_kt.AllDrinksFragment"
             android:label="@string/recipes_fragment_label"
-            tools:layout="@layout/fragment_all_drinks" />
+            tools:layout="@layout/fragment_all_drinks" >
+            <action
+                android:id="@+id/action_allDrinksFragment_to_drinkRecipeFragment"
+                app:destination="@id/drinkRecipeFragment" />
+        </fragment>
         <fragment
             android:id="@+id/drinkRecipeFragment"
             android:name="com.example.mixer_logic_kt.DrinkRecipeFragment"
@@ -64,7 +68,11 @@
             android:id="@+id/favoritesFragment"
             android:name="com.example.mixer_logic_kt.FavoritesFragment"
             android:label="@string/favourites_fragment_label"
-            tools:layout="@layout/fragment_favorites" />
+            tools:layout="@layout/fragment_favorites" >
+            <action
+                android:id="@+id/action_favoritesFragment_to_drinkRecipeFragment2"
+                app:destination="@id/drinkRecipeFragment2" />
+        </fragment>
         <fragment
             android:id="@+id/drinkRecipeFragment2"
             android:name="com.example.mixer_logic_kt.DrinkRecipeFragment"

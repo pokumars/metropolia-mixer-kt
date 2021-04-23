@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.mixer_logic_kt.databinding.FragmentAllDrinksBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -46,15 +47,15 @@ class AllDrinksFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        //_binding = null
+        _binding = null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        /*binding.toFavesBtn.setOnClickListener{
-           val action = AllDrinksFragmentDirections.actionAllDrinksFragmentToFavoritesFragment()
+        binding.toRecipeBtn.setOnClickListener{
+           val action = AllDrinksFragmentDirections.actionAllDrinksFragmentToDrinkRecipeFragment()
             binding.root.findNavController().navigate(action)
-        }*/
+        }
     }
 
     companion object {
