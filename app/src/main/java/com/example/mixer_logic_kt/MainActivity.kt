@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.mixer_logic_kt.databinding.ActivityMainBinding
@@ -22,8 +23,9 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById((R.id.nav_host_fragment)) as NavHostFragment
         navController = navHostFragment.navController
 
-        //This ensures action bar (app bar) buttons, like the menu option in LetterListFragment are visible.
-        setupActionBarWithNavController(navController)
+        val appBarConfig by lazy { AppBarConfiguration(setOf(R.id.startupFragment, R.id.recipes_tab, R.id.favourites_tab, R.id.profile_tab)) }
+
+        setupActionBarWithNavController(navController, appBarConfig)
 
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController)
 
@@ -40,3 +42,13 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }
+
+/*
+       val appBarConfig by lazy { AppBarConfiguration(setOf(R.id.startupFragment, R.id.allDrinksFragment, R.id.favoritesFragment, R.id.profileFragment)) }
+       setupActionBarWithNavController(navController, appBarConfig)*/
+
+/*
+// Correct behaviour and did not have the back arrow thing; difference is using the tabs top level
+//instead of screen. In this one,	the subtabs dont get a back button
+val appBarConfig by lazy { AppBarConfiguration(setOf(R.id.startupFragment, R.id.recipes_tab, R.id.favourites_tab, R.id.profile_tab)) }
+setupActionBarWithNavController(navController, appBarConfig)*/
