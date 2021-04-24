@@ -6,5 +6,10 @@ class Drink (val name: String, val ingredients: List<Ingredient>, val imageUrl: 
              val glass: Glass, val method: List<Method>, val garnish:List<Garnish>?,
              val categories: List<Category>, val alcohols: List<Alcohol>,
              val credits: List<Credit>, val step: List<Step>, val id: Int){
+    //like
+    //unlike
+    fun aboutDrink () {
+        println("Name: $name; method: ${method}")
+    }
 
 }

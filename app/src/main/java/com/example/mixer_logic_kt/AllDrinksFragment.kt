@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import com.example.mixer_logic_kt.databinding.FragmentAllDrinksBinding
+import com.example.mixer_logic_kt.testDataSource.SomeDrinks
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -52,10 +52,11 @@ class AllDrinksFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.toRecipeBtn.setOnClickListener{
+        /*binding.toRecipeBtn.setOnClickListener{
            val action = AllDrinksFragmentDirections.actionAllDrinksFragmentToDrinkRecipeFragment()
             binding.root.findNavController().navigate(action)
-        }
+        }*/
+        binding.drinkNum.text= SomeDrinks().loadDrinks().size.toString()
     }
 
     companion object {
