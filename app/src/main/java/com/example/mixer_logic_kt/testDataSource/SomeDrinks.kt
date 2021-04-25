@@ -111,7 +111,7 @@ class SomeDrinks() {
                         ),
                         5
                 ),
-                Drink("Mini Sea Breeze",
+                Drink("Long Island Iced Tea",
                         listOf<Ingredient>(
                                 Ingredient("vodka", 4, "cl"),
                                 Ingredient("dry vermouth", 1, "dash")

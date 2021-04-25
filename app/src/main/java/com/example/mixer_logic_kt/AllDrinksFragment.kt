@@ -5,6 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.mixer_logic_kt.adapter.DrinkAdapter
 import com.example.mixer_logic_kt.databinding.FragmentAllDrinksBinding
 import com.example.mixer_logic_kt.testDataSource.SomeDrinks
 
@@ -22,6 +25,8 @@ class AllDrinksFragment : Fragment() {
     private var _binding : FragmentAllDrinksBinding? = null
 
     private val binding get() = _binding!!
+
+    private val drinks = SomeDrinks().loadDrinks()
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -56,7 +61,15 @@ class AllDrinksFragment : Fragment() {
            val action = AllDrinksFragmentDirections.actionAllDrinksFragmentToDrinkRecipeFragment()
             binding.root.findNavController().navigate(action)
         }*/
+        val recyclerView: RecyclerView = binding.recyclerView
+
         binding.drinkNum.text= SomeDrinks().loadDrinks().size.toString()
+        recyclerView.adapter = DrinkAdapter(requireContext(), drinks)
+        recyclerView.layoutManager = GridLayoutManager(this.requireContext(), 2)
+
+        // Use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        recyclerView.setHasFixedSize(true)
     }
 
     companion object {
