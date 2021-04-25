@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mixer_logic_kt.R
+import com.example.mixer_logic_kt.Util.loadImage
 import com.example.mixer_logic_kt.model.Drink
 
 class DrinkAdapter (private val context: Context,
@@ -33,6 +34,6 @@ class DrinkAdapter (private val context: Context,
     override fun onBindViewHolder(holder: DrinkViewHolder, position: Int) {
         val drink = dataset[position]
         holder.drinkNameTextView.text = drink.name.toUpperCase()
-        holder.drinkImage.setImageURI(drink.imageUrl)
+        holder.drinkImage.loadImage(drink.imageUrl)
     }
 }

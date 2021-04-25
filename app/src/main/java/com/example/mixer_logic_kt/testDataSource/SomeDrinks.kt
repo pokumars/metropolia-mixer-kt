@@ -177,7 +177,7 @@ class SomeDrinks() {
                         Ingredient("vodka", 4, "cl"),
                         Ingredient("dry vermouth", 1, "dash")
                 ),
-                Uri.parse("https://mixer-logic-p2images.s3.eu-central-1.amazonaws.com/orientalCaipiroska.jpg.jpg"),
+                Uri.parse("https://mixer-logic-p2images.s3.eu-central-1.amazonaws.com/orientalCaipiroska.jpg"),
                 Glass("cocktail"), listOf<Method>(Method("stir")),
                 listOf<Garnish>(Garnish("olives"), Garnish("lemon twist")),
                 listOf<Category>(Category("classic"), Category("martini"), Category("cocktail")),

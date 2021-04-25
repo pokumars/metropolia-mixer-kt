@@ -63,7 +63,6 @@ class AllDrinksFragment : Fragment() {
         }*/
         val recyclerView: RecyclerView = binding.recyclerView
 
-        binding.drinkNum.text= SomeDrinks().loadDrinks().size.toString()
         recyclerView.adapter = DrinkAdapter(requireContext(), drinks)
         recyclerView.layoutManager = GridLayoutManager(this.requireContext(), 2)
 
