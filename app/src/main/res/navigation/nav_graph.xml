@@ -68,7 +68,11 @@
             android:id="@+id/drinkRecipeFragment"
             android:name="com.example.mixer_logic_kt.DrinkRecipeFragment"
             android:label="Drink Name"
-            tools:layout="@layout/fragment_drink_recipe" />
+            tools:layout="@layout/fragment_drink_recipe" >
+            <argument
+                android:name="drinkId"
+                app:argType="integer" />
+        </fragment>
     </navigation>
     <navigation android:id="@+id/favourites_tab"
         app:startDestination="@id/favoritesFragment">
