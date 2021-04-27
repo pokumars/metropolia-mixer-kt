@@ -36,7 +36,7 @@ class SomeDrinks() {
                         ),
                         Uri.parse("https://mixer-logic-p2images.s3.eu-central-1.amazonaws.com/bloodyMaryCocktail.jpg"),
                         Glass("On The Rocks"), listOf<Method>(Method("stir")),
-                        listOf<Garnish>(Garnish("olives"), Garnish("celery stalk"), Garnish("cucumber")),
+                        listOf<Garnish>(Garnish("olives"), Garnish("celery stalk")),
                         listOf<Category>(Category("classic"), Category("ordinary drink")),
                         listOf<Alcohol>(Alcohol("vodka"), Alcohol("lime vodka")),
                         listOf<Credit>(Credit("Finlandia Vodka", "image"), Credit("Finlandia Vodka", "recipe")),
