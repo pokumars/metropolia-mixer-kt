@@ -3,25 +3,31 @@
     <!--https://developer.android.com/codelabs/basic-android-kotlin-training-polished-user-experience?continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fandroid-basics-kotlin-unit-2-pathway-2%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fbasic-android-kotlin-training-polished-user-experience#4 -->
     <style name="Widget.MixerLogic.blackText" parent="Widget.MaterialComponents.TextView">
         <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="Widget.MixerLogic.Headers" parent="Widget.MixerLogic.blackText">
+        <item name="fontFamily">@font/poppins_bold</item>
+    </style>
+    <style name="Widget.MixerLogic.Regular" parent="Widget.MixerLogic.blackText">
         <item name="fontFamily">@font/poppins_bold</item>
     </style>
 
-    <style name="Widget.MixerLogic.H1" parent="Widget.MixerLogic.blackText">
+
+    <style name="Widget.MixerLogic.H1" parent="Widget.MixerLogic.Headers">
         <item name="android:textSize">30sp</item>
     </style>
-    <style name="Widget.MixerLogic.BigText" parent="Widget.MixerLogic.blackText">
+    <style name="Widget.MixerLogic.BigText" parent="Widget.MixerLogic.Headers">
         <item name="android:textSize">40sp</item>
     </style>
 
-    <style name="Widget.MixerLogic.H2" parent="Widget.MixerLogic.blackText">
+    <style name="Widget.MixerLogic.H2" parent="Widget.MixerLogic.Headers">
         <item name="android:textSize">24sp</item>
     </style>
 
-    <style name="Widget.MixerLogic.H3" parent="Widget.MixerLogic.blackText">
+    <style name="Widget.MixerLogic.H3" parent="Widget.MixerLogic.Headers">
         <item name="android:textSize">20sp</item>
     </style>
 
-    <style name="Widget.MixerLogic.H4" parent="Widget.MixerLogic.blackText">
+    <style name="Widget.MixerLogic.H4" parent="Widget.MixerLogic.Headers">
         <item name="android:textSize">18sp</item>
     </style>
 
@@ -48,6 +54,7 @@
         <item name="fontFamily">@font/poppins</item>
         <item name="android:textColor">@color/white</item>
     </style>
+
     <style name="Widget.MixerLogic.BasicText" parent="Widget.MixerLogic.blackText">
         <item name="android:textSize">14sp</item>
         <item name="fontFamily">@font/poppins</item>

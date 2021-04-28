@@ -23,7 +23,6 @@ private const val ARG_PARAM2 = "param2"
  */
 class AllDrinksFragment : Fragment() {
     private var _binding : FragmentAllDrinksBinding? = null
-
     private val binding get() = _binding!!
 
     private val drinks = SomeDrinks().loadDrinks()
