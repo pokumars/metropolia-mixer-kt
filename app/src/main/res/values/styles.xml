@@ -7,22 +7,22 @@
     </style>
 
     <style name="Widget.MixerLogic.H1" parent="Widget.MixerLogic.blackText">
-        <item name="android:textSize">40sp</item>
+        <item name="android:textSize">30sp</item>
     </style>
     <style name="Widget.MixerLogic.BigText" parent="Widget.MixerLogic.blackText">
-        <item name="android:textSize">60sp</item>
+        <item name="android:textSize">40sp</item>
     </style>
 
     <style name="Widget.MixerLogic.H2" parent="Widget.MixerLogic.blackText">
-        <item name="android:textSize">32sp</item>
-    </style>
-
-    <style name="Widget.MixerLogic.H3" parent="Widget.MixerLogic.blackText">
         <item name="android:textSize">24sp</item>
     </style>
 
+    <style name="Widget.MixerLogic.H3" parent="Widget.MixerLogic.blackText">
+        <item name="android:textSize">20sp</item>
+    </style>
+
     <style name="Widget.MixerLogic.H4" parent="Widget.MixerLogic.blackText">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="Widget.MixerLogic.DrinkItemText" parent="Widget.MaterialComponents.TextView">
@@ -38,18 +38,18 @@
     </style>
 
     <style name="Widget.MixerLogic.DrinkExtraDetailKeyText" parent="Widget.MaterialComponents.TextView">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="fontFamily">@font/poppins_bold</item>
         <item name="android:textColor">@color/white</item>
 
     </style>
     <style name="Widget.MixerLogic.DrinkExtraDetailValueText" parent="Widget.MaterialComponents.TextView">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="fontFamily">@font/poppins</item>
         <item name="android:textColor">@color/white</item>
     </style>
     <style name="Widget.MixerLogic.BasicText" parent="Widget.MixerLogic.blackText">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="fontFamily">@font/poppins</item>
     </style>
 

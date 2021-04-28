@@ -41,7 +41,7 @@ class DrinkAdapter (private val context: Context,
         holder.drinkImage.loadImage(drink.imageUrl)
 
         holder.drinkCard.setOnClickListener {
-            val action = AllDrinksFragmentDirections.actionAllDrinksFragmentToDrinkRecipeFragment(drinkId = drink.id)
+            val action = AllDrinksFragmentDirections.actionAllDrinksFragmentToDrinkRecipeFragment(drinkId = drink.id, drinkName = drink.name)
             holder.view.findNavController().navigate(action)
         }
     }

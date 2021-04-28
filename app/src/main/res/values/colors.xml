@@ -10,5 +10,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="input_bg_grey">#FFC5C0C0</color>
+    <color name="warning_red">#FFF44336</color>
 
 </resources>

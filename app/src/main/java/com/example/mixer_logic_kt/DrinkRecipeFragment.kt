@@ -1,11 +1,14 @@
 package com.example.mixer_logic_kt
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.core.widget.ImageViewCompat
 import androidx.fragment.app.Fragment
 import com.example.mixer_logic_kt.Util.displayNullString
 import com.example.mixer_logic_kt.Util.joinWithAnd
@@ -31,7 +34,7 @@ class DrinkRecipeFragment : Fragment() {
     private var _binding : FragmentDrinkRecipeBinding? = null
     private val binding get() = _binding!!
 
-    private var drinkId: Int = 1
+    private var drinkId: Int = 3
     private var drink : Drink? =null
 
     // TODO: Rename and change types of parameters
@@ -67,10 +70,22 @@ class DrinkRecipeFragment : Fragment() {
         binding.drinkGlassTv.text= drink?.glass.toString()
         binding.drinkMethodTv.text=  joinWithAnd(drink?.method?.map { t -> "$t".capitalize() }!!)
 
+
+        if (true){//dynamically set icon and tint of icon
+
+            binding.likeDrinkImgView.setImageResource(R.drawable.ic_heart_outline)
+            ImageViewCompat.setImageTintList(binding.likeDrinkImgView, ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.design_default_color_secondary_variant)))
+        }else{
+            binding.likeDrinkImgView.setImageResource(R.drawable.ic_heart_filled)
+            ImageViewCompat.setImageTintList(binding.likeDrinkImgView, ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.warning_red)))
+
+        }
+
+        populateStepViews ()
+
         drink?.ingredients?.forEach {
             addIngredientView(it);
         }
-
         super.onViewCreated(view, savedInstanceState)
     }
 
@@ -85,15 +100,30 @@ class DrinkRecipeFragment : Fragment() {
 
         val amountTextView : TextView = ingredientView.findViewById(R.id.amount_tv)
         val ingNameTextView : TextView = ingredientView.findViewById(R.id.ing_name_tv)
-
-
-
         amountTextView.text= "${displayNullString(ingredient.amount.toString())} ${displayNullString(ingredient.unitOfMeasurement)}"
         ingNameTextView.text= "${displayNullString(ingredient.item)}"
 
         ingredientListLayout.addView(ingredientView)
-
     }
+
+
+    //render all the steps of the drink
+    private fun populateStepViews () {
+
+        val stepsListLayout: LinearLayout = binding.stepsParentLayout
+        //val stepTextView: TextView = layoutInflater.inflate(R.layout.step_tv_layout, null) as TextView
+
+
+        //give the list and index and then use the index with the avtual value to display the step
+        drink?.steps?.withIndex()?.map {
+            val stepTextView: TextView = layoutInflater.inflate(R.layout.step_tv_layout, null) as TextView
+            stepTextView.text= "${it.index + 1}. ${it.value.stepText}"
+
+            stepsListLayout.addView(stepTextView)
+        }
+    }
+
+
 
     companion object {
         const val DRINKID = "drinkId"
