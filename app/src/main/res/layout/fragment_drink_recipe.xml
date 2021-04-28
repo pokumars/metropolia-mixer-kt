@@ -52,6 +52,18 @@
                 style="@style/Widget.MixerLogic.H4"
                 android:textAlignment="center"
                  />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginVertical="15dp"
+                android:paddingStart="25dp"
+                android:id="@+id/ingredients_parent_layout"
+                >
+
+
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/how_to_mix_tv"
@@ -61,12 +73,21 @@
                 android:text="HOW TO MIX"
                 android:textAlignment="center"
                 style="@style/Widget.MixerLogic.H4" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/steps_parent_layout"
+                >
+
+
+            </LinearLayout>
 
             <LinearLayout
 
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/design_default_color_secondary_variant"
+                android:background="@color/teal_500"
                 android:paddingStart="25dp"
                 android:orientation="vertical">
 

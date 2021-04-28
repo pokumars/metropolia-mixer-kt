@@ -4,12 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.example.mixer_logic_kt.Util.displayNullString
 import com.example.mixer_logic_kt.Util.joinWithAnd
 import com.example.mixer_logic_kt.Util.loadImage
 import com.example.mixer_logic_kt.databinding.FragmentDrinkRecipeBinding
 import com.example.mixer_logic_kt.model.Drink
+import com.example.mixer_logic_kt.model.Ingredient
 import com.example.mixer_logic_kt.testDataSource.SomeDrinks
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +29,6 @@ private const val ARG_PARAM2 = "param2"
 class DrinkRecipeFragment : Fragment() {
 
     private var _binding : FragmentDrinkRecipeBinding? = null
-
     private val binding get() = _binding!!
 
     private var drinkId: Int = 1
@@ -63,12 +67,32 @@ class DrinkRecipeFragment : Fragment() {
         binding.drinkGlassTv.text= drink?.glass.toString()
         binding.drinkMethodTv.text=  joinWithAnd(drink?.method?.map { t -> "$t".capitalize() }!!)
 
+        drink?.ingredients?.forEach {
+            addIngredientView(it);
+        }
+
         super.onViewCreated(view, savedInstanceState)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    fun addIngredientView(ingredient: Ingredient) {
+        val ingredientListLayout: LinearLayout = binding.ingredientsParentLayout
+        val ingredientView: View = layoutInflater.inflate(R.layout.recipe_ingredient_layout, null, false)
+
+        val amountTextView : TextView = ingredientView.findViewById(R.id.amount_tv)
+        val ingNameTextView : TextView = ingredientView.findViewById(R.id.ing_name_tv)
+
+
+
+        amountTextView.text= "${displayNullString(ingredient.amount.toString())} ${displayNullString(ingredient.unitOfMeasurement)}"
+        ingNameTextView.text= "${displayNullString(ingredient.item)}"
+
+        ingredientListLayout.addView(ingredientView)
+
     }
 
     companion object {

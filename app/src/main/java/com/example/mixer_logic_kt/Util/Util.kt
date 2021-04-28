@@ -23,3 +23,9 @@ fun joinWithAnd (theList: List<String>): String{
     return result
 }
 
+
+fun displayNullString (str: String?): String{
+    val result = if (str==null|| str=="null") "" else str
+    return result
+}
+

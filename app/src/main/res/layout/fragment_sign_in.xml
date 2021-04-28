@@ -19,10 +19,12 @@ tools:context=".SignInFragment">
     app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
+        android:background="@drawable/rounded_primary"
         android:id="@+id/sign_in_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
+        android:minWidth="200dp"
         android:text="to app"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.529"
@@ -30,10 +32,12 @@ tools:context=".SignInFragment">
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <com.google.android.material.button.MaterialButton
+        android:background="@drawable/rounded_primary"
         android:id="@+id/forgot_password_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
+        android:minWidth="200dp"
         android:text="forgot password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
