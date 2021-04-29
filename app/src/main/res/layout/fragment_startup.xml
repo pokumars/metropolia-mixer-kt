@@ -19,7 +19,7 @@
             android:layout_marginTop="30dp"
             android:maxWidth="300dp"
             android:maxHeight="300dp"
-            android:src="@drawable/Splash_img"
+            android:src="@drawable/splash_img"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"

@@ -81,7 +81,7 @@
         </fragment>
     </navigation>
     <navigation android:id="@+id/favourites_tab"
-        app:startDestination="@id/drinkRecipeFragment2">
+        app:startDestination="@id/favoritesFragment">
         <fragment
             android:id="@+id/favoritesFragment"
             android:name="com.example.mixer_logic_kt.FavoritesFragment"
@@ -94,8 +94,16 @@
         <fragment
             android:id="@+id/drinkRecipeFragment2"
             android:name="com.example.mixer_logic_kt.DrinkRecipeFragment"
-            android:label="fragment_drink_recipe"
-            tools:layout="@layout/fragment_drink_recipe" />
+            android:label="@string/recipe_fragment_label"
+            tools:layout="@layout/fragment_drink_recipe">
+            <argument
+                android:name="drinkId"
+                app:argType="integer" />
+            <argument
+                android:name="drinkName"
+                android:defaultValue="Drink"
+                app:argType="string" />
+        </fragment>
     </navigation>
     <navigation android:id="@+id/profile_tab"
         app:startDestination="@id/profileFragment">

@@ -5,8 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.mixer_logic_kt.adapter.FavoritesAdapter
 import com.example.mixer_logic_kt.databinding.FragmentFavoritesBinding
+import com.example.mixer_logic_kt.testDataSource.SomeDrinks
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +25,9 @@ class FavoritesFragment : Fragment() {
     private var _binding :FragmentFavoritesBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var recyclerView: RecyclerView
+    private val drinks = SomeDrinks().loadNoDrinks() //SomeDrinks().loadDrinks()
+    private lateinit var  adapter: FavoritesAdapter
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -33,6 +39,8 @@ class FavoritesFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+        adapter = FavoritesAdapter(requireContext(), drinks)
     }
 
     override fun onCreateView(
@@ -52,9 +60,33 @@ class FavoritesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.toRecipeBtn.setOnClickListener{
-            val action = FavoritesFragmentDirections.actionFavoritesFragmentToDrinkRecipeFragment2()
-            binding.root.findNavController().navigate(action)
+        /*binding.toRecipeBtn.setOnClickListener{
+   val action = AllDrinksFragmentDirections.actionAllDrinksFragmentToDrinkRecipeFragment()
+    binding.root.findNavController().navigate(action)
+}*/
+        recyclerView = binding.favRecyclerView
+
+        recyclerView.adapter = adapter//FavoritesAdapter(requireContext(), drinks)
+        recyclerView.layoutManager = GridLayoutManager(this.requireContext(), 2)
+
+        renderTextOrRecyclerView()
+        // Use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        recyclerView.setHasFixedSize(true)
+    }
+
+    //show the recyclerview or show text that says there are no favourites
+    private fun renderTextOrRecyclerView() {
+        if(recyclerView.adapter?.itemCount!! < 1){
+            //binding.favRecyclerView.visibility(View.VISIBLE)
+            //binding.noFavTv
+
+            binding.favRecyclerView.visibility = View.GONE
+            binding.noFavTv.visibility= View.VISIBLE
+        }
+        else{
+            binding.favRecyclerView.visibility = View.VISIBLE
+            binding.noFavTv.visibility= View.GONE
         }
     }
 

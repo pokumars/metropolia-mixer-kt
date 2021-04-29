@@ -4,6 +4,10 @@ import android.net.Uri
 import com.example.mixer_logic_kt.model.*
 
 class SomeDrinks() {
+        fun loadNoDrinks(): List<Drink>{
+                return listOf<Drink>()
+        }
+
     fun loadDrinks(): List<Drink> {
         return listOf<Drink>(
                 Drink("Vodka Martini",
@@ -192,4 +196,6 @@ class SomeDrinks() {
                 )
         )
     }
+
+
 }

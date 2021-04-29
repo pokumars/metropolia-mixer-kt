@@ -34,6 +34,7 @@
     <string name="method_txt">Method: </string>
     <string name="garnish_txt">Garnish: </string>
     <string name="as_guest_explainer">* Continues as guest in browser</string>
+    <string name="no_favorites">You have 0 liked drinks. Open a drink recipe and click the like button and it will appear here</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

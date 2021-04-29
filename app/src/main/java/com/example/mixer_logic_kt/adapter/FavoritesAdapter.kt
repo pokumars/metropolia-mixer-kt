@@ -9,14 +9,14 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mixer_logic_kt.AllDrinksFragmentDirections
+import com.example.mixer_logic_kt.FavoritesFragmentDirections
 import com.example.mixer_logic_kt.R
 import com.example.mixer_logic_kt.Util.loadImage
 import com.example.mixer_logic_kt.model.Drink
 
-class DrinkAdapter (private val context: Context,
-                    private val dataset: List<Drink>
-): RecyclerView.Adapter<DrinkAdapter.DrinkViewHolder>() {
+class FavoritesAdapter (private val context: Context,
+                        private val dataset: List<Drink>
+): RecyclerView.Adapter<FavoritesAdapter.DrinkViewHolder>() {
 
     class DrinkViewHolder(val view: View): RecyclerView.ViewHolder(view) {
         val drinkNameTextView : TextView = view.findViewById(R.id.drink_title_tv)
@@ -41,7 +41,7 @@ class DrinkAdapter (private val context: Context,
         holder.drinkImage.loadImage(drink.imageUrl)
 
         holder.drinkCard.setOnClickListener {
-            val action = AllDrinksFragmentDirections.actionAllDrinksFragmentToDrinkRecipeFragment(drinkId = drink.id, drinkName = drink.name)
+            val action = FavoritesFragmentDirections.actionFavoritesFragmentToDrinkRecipeFragment2(drinkId = drink.id, drinkName = drink.name)
             holder.view.findNavController().navigate(action)
         }
     }
