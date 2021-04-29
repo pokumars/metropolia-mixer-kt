@@ -50,16 +50,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/poppins_bold"
-                android:text="CINNAMINI"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                tools:text="CINNAMINI" />
 
             <TextView
+                style="@style/Widget.MixerLogic.H4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ingredients"
-                style="@style/Widget.MixerLogic.H4"
-                android:textAlignment="center"
-                 />
+                android:text="@string/ingredients_header"
+                android:textAlignment="center" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -75,12 +74,12 @@
 
             <TextView
                 android:id="@+id/how_to_mix_tv"
+                style="@style/Widget.MixerLogic.H4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
 
-                android:text="HOW TO MIX"
-                android:textAlignment="center"
-                style="@style/Widget.MixerLogic.H4" />
+                android:layout_height="wrap_content"
+                android:text="@string/how_to_mix_header"
+                android:textAlignment="center" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -109,8 +108,8 @@
                     <TextView
                         style="@style/Widget.MixerLogic.DrinkExtraDetailKeyText"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Glass: " />
+                        android:layout_height="match_parent"
+                        android:text="@string/glass_txt" />
 
                     <TextView
                         android:id="@+id/drink_glass_tv"
@@ -130,7 +129,7 @@
                         style="@style/Widget.MixerLogic.DrinkExtraDetailKeyText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Method: " />
+                        android:text="@string/method_txt" />
 
                     <TextView
                         android:id="@+id/drink_method_tv"
@@ -150,7 +149,7 @@
                         style="@style/Widget.MixerLogic.DrinkExtraDetailKeyText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Garnish: " />
+                        android:text="@string/garnish_txt" />
 
                     <TextView
                         android:id="@+id/drink_garnish_tv"
