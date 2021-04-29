@@ -56,6 +56,12 @@ class StartupFragment : Fragment() {
             val action = StartupFragmentDirections.actionStartupFragmentToRegisterFragment()
             binding.root.findNavController().navigate(action)
         }
+
+        binding.asGuestBtn.setOnClickListener{
+
+            val action =  StartupFragmentDirections.actionStartupFragmentToGuestWebViewFragment()
+            binding.root.findNavController().navigate(action)
+        }
     }
 
     override fun onDestroyView() {

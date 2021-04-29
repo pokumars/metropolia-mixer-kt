@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/favourites_tab">
+    app:startDestination="@id/startupFragment">
 
     <fragment
         android:id="@+id/startupFragment"
@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_startupFragment_to_signInFragment"
             app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_startupFragment_to_guestWebViewFragment"
+            app:destination="@id/guestWebViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -118,4 +121,9 @@
         android:name="com.example.mixer_logic_kt.AllDrinksFragment"
         android:label="fragment_all_drinks"
         tools:layout="@layout/fragment_all_drinks" />
+    <fragment
+        android:id="@+id/guestWebViewFragment"
+        android:name="com.example.mixer_logic_kt.GuestWebViewFragment"
+        android:label="web view"
+        tools:layout="@layout/fragment_guest_web_view" />
 </navigation>

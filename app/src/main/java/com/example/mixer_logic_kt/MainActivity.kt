@@ -25,15 +25,21 @@ class MainActivity : AppCompatActivity() {
 
         val appBarConfig by lazy { AppBarConfiguration(setOf(R.id.startupFragment, R.id.recipes_tab, R.id.favourites_tab, R.id.profile_tab)) }
 
+
         setupActionBarWithNavController(navController, appBarConfig)
+
 
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController)
 
         navController.addOnDestinationChangedListener{_, destination, _ ->
             if(destination.id == R.id.signInFragment ||  destination.id == R.id.startupFragment ||
-                destination.id == R.id.registerFragment || destination.id == R.id.forgotPasswordFragment ){
+                destination.id == R.id.registerFragment || destination.id == R.id.forgotPasswordFragment
+                || destination.id == R.id.guestWebViewFragment
+                ){
+                //hide bottomNavigationView
                 binding.bottomNavigationView.visibility = View.GONE
-            }else{
+            }
+            else{
                 binding.bottomNavigationView.visibility = View.VISIBLE
             }
         }
@@ -43,6 +49,15 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }
+
+/*
+else if(destination.id == R.id.guestWebViewFragment){
+                //hide app bar and bottomNavigationView
+                actionBar?.hide()
+                binding.bottomNavigationView.visibility = View.GONE
+            }
+
+ */
 
 /*
        val appBarConfig by lazy { AppBarConfiguration(setOf(R.id.startupFragment, R.id.allDrinksFragment, R.id.favoritesFragment, R.id.profileFragment)) }
