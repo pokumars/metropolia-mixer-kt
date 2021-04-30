@@ -27,6 +27,7 @@
 
 
         <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MixerLogic.RoundedButton"
             android:id="@+id/to_register_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,7 +44,7 @@
             android:id="@+id/to_sign_in_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            style="@style/Widget.MixerLogic.RoundedButton"
             android:layout_marginHorizontal="10dp"
             android:layout_marginVertical="20dp"
             android:background="@drawable/rounded_secondary"
@@ -62,6 +63,7 @@
             android:layout_marginBottom="20dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/outlined_secondary"
+            style="@style/Widget.MixerLogic.RoundedButton"
             android:minWidth="300dp"
             android:text="@string/as_guest_btn_txt"
             android:textColor="@color/design_default_color_secondary_variant"

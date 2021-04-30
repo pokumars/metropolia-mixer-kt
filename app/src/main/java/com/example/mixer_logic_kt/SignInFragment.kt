@@ -1,6 +1,7 @@
 package com.example.mixer_logic_kt
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,13 +50,20 @@ class SignInFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.signInBtn.setOnClickListener{
-            //the original style from the codelab
+            //the original style from the code lab
             val action = SignInFragmentDirections.actionSignInFragmentToRecipesTab()
             binding.root.findNavController().navigate(action)
         }
-        binding.forgotPasswordBtn.setOnClickListener{
-            val action = SignInFragmentDirections.actionSignInFragmentToForgotPasswordFragment()
-            binding.root.findNavController().navigate(action)
+
+        binding.forgotPasswordActionTextBtn.setOnClickListener{
+            //val action = SignInFragmentDirections.actionSignInFragmentToForgotPasswordFragment()
+            //binding.root.findNavController().navigate(action)
+            Log.d(TAG,"forgotPasswordActionTextBtn clicked")
+        }
+        binding.registerActionTextBtn.setOnClickListener{
+            //val action = SignInFragmentDirections.actionSignInFragmentToForgotPasswordFragment()
+            //binding.root.findNavController().navigate(action)
+            Log.d(TAG,"registerActionTextBtn clicked")
         }
     }
 
