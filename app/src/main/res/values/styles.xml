@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="Widget.MixerLogic.RoundedButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:foreground">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:clickable">true</item>
+    </style>
+
     <!--https://developer.android.com/codelabs/basic-android-kotlin-training-polished-user-experience?continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fandroid-basics-kotlin-unit-2-pathway-2%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fbasic-android-kotlin-training-polished-user-experience#4 -->
     <style name="Widget.MixerLogic.blackText" parent="Widget.MaterialComponents.TextView">
         <item name="android:textColor">@color/black</item>
@@ -58,6 +63,12 @@
     <style name="Widget.MixerLogic.BasicText" parent="Widget.MixerLogic.blackText">
         <item name="android:textSize">14sp</item>
         <item name="fontFamily">@font/poppins</item>
+    </style>
+
+    <style name="Widget.MixerLogic.InputLabelText" parent="Widget.MixerLogic.blackText">
+        <item name="android:textSize">11sp</item>
+        <item name="fontFamily">@font/poppins</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
 
