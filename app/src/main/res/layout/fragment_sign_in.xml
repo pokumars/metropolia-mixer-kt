@@ -26,6 +26,7 @@ tools:context=".SignInFragment">
                android:layout_width="match_parent"
                android:layout_height="wrap_content">
 
+               <!--Header -->
                <TextView
                    android:id="@+id/sign_in_header"
                    style="@style/Widget.MixerLogic.H1"
@@ -38,6 +39,22 @@ tools:context=".SignInFragment">
                    app:layout_constraintStart_toStartOf="parent"
                    app:layout_constraintTop_toTopOf="parent" />
 
+               <!--Error Message -->
+               <TextView
+                   android:id="@+id/sign_in_error_message"
+                   style="@style/Widget.MixerLogic.BasicText"
+                   android:layout_width="match_parent"
+                   android:gravity="center"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="8dp"
+                   android:paddingEnd="5dp"
+                   tools:text="some error occurred here"
+                   android:textColor="@color/warning_red"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@id/sign_in_header" />
+
+               <!--username -->
 
                <TextView
                    android:id="@+id/username_input_label"
@@ -48,7 +65,7 @@ tools:context=".SignInFragment">
                    android:paddingEnd="10dp"
                    android:text="@string/username_input_header"
                    app:layout_constraintStart_toStartOf="@+id/editText_username"
-                   app:layout_constraintTop_toBottomOf="@+id/sign_in_header" />
+                   app:layout_constraintTop_toBottomOf="@+id/sign_in_error_message" />
 
 
                <EditText
@@ -65,13 +82,13 @@ tools:context=".SignInFragment">
                    app:layout_constraintStart_toStartOf="parent"
                    tools:layout_editor_absoluteY="55dp" />
 
+               <!-- Password-->
                <TextView
                    android:id="@+id/password_input_label"
                    style="@style/Widget.MixerLogic.InputLabelText"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:layout_marginTop="16dp"
-                   android:paddingEnd="10dp"
                    android:text="@string/password_input_header"
                    app:layout_constraintStart_toStartOf="@+id/editText_password"
                    app:layout_constraintTop_toBottomOf="@+id/editText_username" />
@@ -91,6 +108,7 @@ tools:context=".SignInFragment">
                    app:layout_constraintStart_toStartOf="parent"
                    />
 
+               <!-- Button -->
                <com.google.android.material.button.MaterialButton
                    android:id="@+id/sign_in_btn"
                    android:layout_width="wrap_content"
@@ -104,8 +122,9 @@ tools:context=".SignInFragment">
                    app:layout_constraintStart_toStartOf="parent"
                    app:layout_constraintTop_toBottomOf="@+id/editText_password" />
 
+               <!-- Dont have account-->
                <LinearLayout
-                   android:id="@+id/already_have_acct_text"
+                   android:id="@+id/dont_have_acct_layout"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:layout_marginTop="32dp"
@@ -134,7 +153,7 @@ tools:context=".SignInFragment">
                        android:textColor="@color/design_default_color_secondary_variant" />
 
                </LinearLayout>
-
+               <!-- Forgot password-->
                <TextView
                    android:id="@+id/forgot_password_action_text_btn"
                    style="@style/Widget.MixerLogic.BasicText"
@@ -146,10 +165,7 @@ tools:context=".SignInFragment">
                    android:textColor="@color/design_default_color_secondary_variant"
                    app:layout_constraintEnd_toEndOf="parent"
                    app:layout_constraintStart_toStartOf="parent"
-                   app:layout_constraintTop_toBottomOf="@id/already_have_acct_text" />
-
-
-
+                   app:layout_constraintTop_toBottomOf="@id/dont_have_acct_layout" />
            </androidx.constraintlayout.widget.ConstraintLayout>
 
 

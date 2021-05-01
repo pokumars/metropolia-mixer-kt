@@ -39,6 +39,7 @@
     <string name="sign_in_action_txt">Sign In</string>
     <string name="register_action_txt">Register</string>
     <string name="forgot_password_action_txt">Forgot Password?</string>
+    <string name="send_recovery_email_btn_txt">Send Recovery Email</string>
 
     <!--Texts -->
     <string name="glass_txt">Glass: </string>
@@ -48,6 +49,7 @@
     <string name="no_favorites">You have 0 liked drinks. Open a drink recipe and click the like button and it will appear here</string>
     <string name="dont_have_acct_txt">Don\'t have an account?</string>
     <string name="already_have_acct_txt">Already have an account?</string>
+    <string name="forgot_password_explainer"> Forgot your account\'s password? Enter your email address, and we\'ll send you a recovery link.</string>
 
     <!--Placeholders -->
 

@@ -1,6 +1,7 @@
 package com.example.mixer_logic_kt
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,6 +51,10 @@ class RegisterFragment : Fragment() {
         binding.registerBtn.setOnClickListener{
             //val action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment2()
             //binding.root.findNavController().navigate(action)
+            Log.d(TAG, "registerBtn clicked")
+        }
+        binding.signInActionTextBtn.setOnClickListener{
+           Log.d(TAG, "signInActionTextBtn clicked")
         }
     }
 

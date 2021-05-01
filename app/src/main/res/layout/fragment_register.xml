@@ -1,120 +1,271 @@
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterFragment">
-    <com.google.android.material.card.MaterialCardView
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginVertical="25dp"
-        app:contentPaddingBottom="70dp"
-        app:cardBackgroundColor="@color/purple_50"
-        app:cardCornerRadius="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="wrap_content">
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginVertical="25dp"
+            app:contentPaddingBottom="70dp"
+            app:cardBackgroundColor="@color/purple_50"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:paddingTop="10dp"
-                android:id="@+id/sign_in_header"
-                style="@style/Widget.MixerLogic.H1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sign_in_header"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/error_text"
-                style="@style/Widget.MixerLogic.BasicText"
-                android:textColor="@color/warning_red"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                tools:text="some error occurred"
-                android:paddingBottom="10dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/sign_in_header" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/username_input_label"
-                style="@style/Widget.MixerLogic.InputLabelText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/username_input_header"
-                android:paddingEnd="10dp"
-                app:layout_constraintStart_toStartOf="@+id/editText_username"
-                app:layout_constraintTop_toBottomOf="@+id/error_text" />
-            <TextView
-                android:id="@+id/error_next_to_username"
-                style="@style/Widget.MixerLogic.InputLabelText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="some info goes here"
-                android:textColor="@color/design_default_color_primary"
-                app:layout_constraintStart_toEndOf="@+id/username_input_label"
-                app:layout_constraintTop_toBottomOf="@+id/error_text" />
+                <TextView
+                    android:paddingTop="10dp"
+                    android:id="@+id/sign_in_header"
+                    style="@style/Widget.MixerLogic.H1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/register_header"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/editText_username"
-                android:layout_width="match_parent"
-                android:layout_marginHorizontal="25dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:background="@drawable/input_background"
+                <TextView
+                    android:id="@+id/error_text"
+                    style="@style/Widget.MixerLogic.BasicText"
+                    android:textColor="@color/warning_red"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    tools:text="some error occurred"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/sign_in_header" />
 
-                app:layout_constraintTop_toBottomOf="@id/username_input_label"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="55dp" />
-            <EditText
-                android:id="@+id/editText_username_test"
-                android:layout_width="match_parent"
-                android:layout_marginHorizontal="25dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name"
-                app:layout_constraintTop_toBottomOf="@id/editText_username"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="55dp" />
+                <!-- Username -->
+                <TextView
+                    android:id="@+id/username_error_tv"
+                    style="@style/Widget.MixerLogic.BasicText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:textColor="@color/warning_red"
+                    app:layout_constraintStart_toStartOf="@+id/username_input_label"
+                    app:layout_constraintTop_toBottomOf="@id/error_text"
+                    tools:text="some username error occurred" />
+                <TextView
+                    android:id="@+id/username_input_label"
+                    style="@style/Widget.MixerLogic.InputLabelText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="10dp"
+                    android:text="@string/username_input_header"
+                    app:layout_constraintTop_toBottomOf="@id/username_error_tv"
+                    app:layout_constraintStart_toStartOf="@+id/editText_username"
+                    tools:layout_editor_absoluteY="90dp" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/info_next_to_username_label_tv"
+                    style="@style/Widget.MixerLogic.InputLabelText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/design_default_color_primary"
+                    app:layout_constraintTop_toBottomOf="@id/username_error_tv"
+                    app:layout_constraintStart_toEndOf="@+id/username_input_label"
+                    tools:layout_editor_absoluteY="90dp"
+                    tools:text="some info goes here" />
 
-    </com.google.android.material.card.MaterialCardView>
+                <EditText
+                    android:id="@+id/editText_username"
+                    android:layout_width="match_parent"
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:background="@drawable/input_background"
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
-        android:text="register page"
-        style="@style/Widget.MixerLogic.BigText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@id/username_input_label"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="55dp" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/register_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="to login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.332" />
+                <!--Email -->
+                <TextView
+                    android:id="@+id/email_error_tv"
+                    style="@style/Widget.MixerLogic.BasicText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:textColor="@color/warning_red"
+                    app:layout_constraintStart_toStartOf="@+id/email_input_label"
+                    app:layout_constraintTop_toBottomOf="@id/editText_username"
+                    tools:text="some email error occurred" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/email_input_label"
+                    style="@style/Widget.MixerLogic.InputLabelText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email_input_header"
+                    app:layout_constraintTop_toBottomOf="@id/email_error_tv"
+                    app:layout_constraintStart_toStartOf="@+id/editText_username"
+                    tools:layout_editor_absoluteY="90dp" />
+
+
+                <EditText
+                    android:id="@+id/editText_email"
+                    android:layout_width="match_parent"
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:background="@drawable/input_background"
+                    app:layout_constraintTop_toBottomOf="@id/email_input_label"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="55dp" />
+
+                <!-- Password-->
+                <TextView
+                    android:id="@+id/password_error_tv"
+                    style="@style/Widget.MixerLogic.BasicText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:textColor="@color/warning_red"
+                    app:layout_constraintStart_toStartOf="@+id/password_input_label"
+                    app:layout_constraintTop_toBottomOf="@id/editText_email"
+                    tools:text="some password error occurred" />
+
+
+                <TextView
+                    android:id="@+id/password_input_label"
+                    style="@style/Widget.MixerLogic.InputLabelText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/password_input_header"
+                    app:layout_constraintTop_toBottomOf="@id/password_error_tv"
+                    app:layout_constraintStart_toStartOf="@+id/editText_password"
+                    />
+
+
+                <EditText
+                    android:id="@+id/editText_password"
+                    android:layout_width="match_parent"
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:background="@drawable/input_background"
+
+                    app:layout_constraintTop_toBottomOf="@id/password_input_label"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="55dp" />
+
+                <!-- Confirm Password-->
+
+
+                <TextView
+                    android:id="@+id/confirm_password_error_tv"
+                    style="@style/Widget.MixerLogic.BasicText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:textColor="@color/warning_red"
+                    app:layout_constraintStart_toStartOf="@+id/confirm_password_input_label"
+                    app:layout_constraintTop_toBottomOf="@id/editText_password"
+                    tools:text="some confirm password error occurred" />
+
+
+                <TextView
+                    android:id="@+id/confirm_password_input_label"
+                    style="@style/Widget.MixerLogic.InputLabelText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/confirm_password_input_header"
+                    app:layout_constraintTop_toBottomOf="@id/confirm_password_error_tv"
+                    app:layout_constraintStart_toStartOf="@+id/editText_confirm_password"
+                    />
+
+
+
+                <EditText
+                    android:id="@+id/editText_confirm_password"
+                    android:layout_width="match_parent"
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:background="@drawable/input_background"
+                    app:layout_constraintTop_toBottomOf="@id/confirm_password_input_label"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+                <!--Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/register_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/register_btn_txt"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_confirm_password" />
+
+                <!--Already have an account? -->
+                <LinearLayout
+                    android:id="@+id/already_have_acct_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/register_btn">
+
+                    <TextView
+
+                        style="@style/Widget.MixerLogic.BasicText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="5dp"
+                        android:text="@string/already_have_acct_txt" />
+
+                    <TextView
+                        android:id="@+id/sign_in_action_text_btn"
+                        style="@style/Widget.MixerLogic.BasicText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:paddingEnd="5dp"
+                        android:text="@string/sign_in_action_txt"
+                        android:textColor="@color/design_default_color_secondary_variant" />
+
+                </LinearLayout>
+
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+</ScrollView>
