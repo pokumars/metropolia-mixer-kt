@@ -10,10 +10,10 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.widget.ImageViewCompat
 import androidx.fragment.app.Fragment
+import coil.load
 import com.example.mixer_logic_kt.R
 import com.example.mixer_logic_kt.Util.displayNullString
 import com.example.mixer_logic_kt.Util.joinWithAnd
-import com.example.mixer_logic_kt.Util.loadImage
 import com.example.mixer_logic_kt.databinding.FragmentDrinkRecipeBinding
 import com.example.mixer_logic_kt.model.Drink
 import com.example.mixer_logic_kt.model.Ingredient
@@ -65,7 +65,7 @@ class DrinkRecipeFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.imageView.loadImage(drink!!.imageUrl)
+        binding.imageView.load(drink!!.imageUrl)
         binding.drinkNameTv.text= drink?.name.toString()
         binding.drinkGarnishTv.text= joinWithAnd(drink?.garnish?.map { t -> "$t".capitalize() }!!)
         binding.drinkGlassTv.text= drink?.glass.toString()
