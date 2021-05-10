@@ -1,4 +1,4 @@
-package com.example.mixer_logic_kt
+package com.example.mixer_logic_kt.Ui.Auth
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.example.mixer_logic_kt.StartupFragmentDirections
 import com.example.mixer_logic_kt.databinding.FragmentStartupBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -48,18 +49,21 @@ class StartupFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
         binding.toSignInBtn.setOnClickListener{
-            val action = StartupFragmentDirections.actionStartupFragmentToSignInFragment()
+            val action =
+                StartupFragmentDirections.actionStartupFragmentToSignInFragment()
             binding.root.findNavController().navigate(action)
         }
 
         binding.toRegisterBtn.setOnClickListener{
-            val action = StartupFragmentDirections.actionStartupFragmentToRegisterFragment()
+            val action =
+                StartupFragmentDirections.actionStartupFragmentToRegisterFragment()
             binding.root.findNavController().navigate(action)
         }
 
         binding.asGuestBtn.setOnClickListener{
 
-            val action =  StartupFragmentDirections.actionStartupFragmentToGuestWebViewFragment()
+            val action =
+                StartupFragmentDirections.actionStartupFragmentToGuestWebViewFragment()
             binding.root.findNavController().navigate(action)
         }
     }

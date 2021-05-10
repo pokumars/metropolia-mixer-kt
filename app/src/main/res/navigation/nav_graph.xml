@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/startupFragment"
-        android:name="com.example.mixer_logic_kt.StartupFragment"
+        android:name="com.example.mixer_logic_kt.Ui.Auth.StartupFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_startup">
         <action
@@ -22,12 +22,12 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.mixer_logic_kt.RegisterFragment"
+        android:name="com.example.mixer_logic_kt.Ui.Auth.RegisterFragment"
         android:label="@string/register_fragment_label"
         tools:layout="@layout/fragment_register"/>
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.example.mixer_logic_kt.SignInFragment"
+        android:name="com.example.mixer_logic_kt.Ui.Auth.SignInFragment"
         android:label="@string/sign_in_fragment_label"
         tools:layout="@layout/fragment_sign_in">
         <!--        app:popUpToInclusive="true"-->
@@ -47,7 +47,7 @@
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
-        android:name="com.example.mixer_logic_kt.ForgotPasswordFragment"
+        android:name="com.example.mixer_logic_kt.Ui.Auth.ForgotPasswordFragment"
         android:label="@string/forgot_password_fragment_label"
         tools:layout="@layout/fragment_forgot_password" >
         <action
@@ -62,7 +62,7 @@
         app:startDestination="@id/allDrinksFragment">
         <fragment
             android:id="@+id/allDrinksFragment"
-            android:name="com.example.mixer_logic_kt.AllDrinksFragment"
+            android:name="com.example.mixer_logic_kt.Ui.Screens.AllDrinksFragment"
             android:label="@string/recipes_fragment_label"
             tools:layout="@layout/fragment_all_drinks">
             <action
@@ -71,7 +71,7 @@
         </fragment>
         <fragment
             android:id="@+id/drinkRecipeFragment"
-            android:name="com.example.mixer_logic_kt.DrinkRecipeFragment"
+            android:name="com.example.mixer_logic_kt.Ui.Screens.DrinkRecipeFragment"
             android:label="@string/recipe_fragment_label"
             tools:layout="@layout/fragment_drink_recipe">
             <argument
@@ -87,7 +87,7 @@
         app:startDestination="@id/favoritesFragment">
         <fragment
             android:id="@+id/favoritesFragment"
-            android:name="com.example.mixer_logic_kt.FavoritesFragment"
+            android:name="com.example.mixer_logic_kt.Ui.Screens.FavoritesFragment"
             android:label="@string/favourites_fragment_label"
             tools:layout="@layout/fragment_favorites" >
             <action
@@ -96,7 +96,7 @@
         </fragment>
         <fragment
             android:id="@+id/drinkRecipeFragment2"
-            android:name="com.example.mixer_logic_kt.DrinkRecipeFragment"
+            android:name="com.example.mixer_logic_kt.Ui.Screens.DrinkRecipeFragment"
             android:label="@string/recipe_fragment_label"
             tools:layout="@layout/fragment_drink_recipe">
             <argument
@@ -112,18 +112,18 @@
         app:startDestination="@id/profileFragment">
         <fragment
             android:id="@+id/profileFragment"
-            android:name="com.example.mixer_logic_kt.ProfileFragment"
+            android:name="com.example.mixer_logic_kt.Ui.Screens.ProfileFragment"
             android:label="@string/profile_fragment_label"
             tools:layout="@layout/fragment_profile" />
     </navigation>
     <fragment
         android:id="@+id/allDrinksFragment2"
-        android:name="com.example.mixer_logic_kt.AllDrinksFragment"
+        android:name="com.example.mixer_logic_kt.Ui.Screens.AllDrinksFragment"
         android:label="fragment_all_drinks"
         tools:layout="@layout/fragment_all_drinks" />
     <fragment
         android:id="@+id/guestWebViewFragment"
-        android:name="com.example.mixer_logic_kt.GuestWebViewFragment"
+        android:name="com.example.mixer_logic_kt.Ui.Screens.GuestWebViewFragment"
         android:label="web view"
         tools:layout="@layout/fragment_guest_web_view" />
 </navigation>

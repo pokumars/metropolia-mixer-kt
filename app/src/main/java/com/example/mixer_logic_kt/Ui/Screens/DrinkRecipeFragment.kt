@@ -1,4 +1,4 @@
-package com.example.mixer_logic_kt
+package com.example.mixer_logic_kt.Ui.Screens
 
 import android.content.res.ColorStateList
 import android.os.Bundle
@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.widget.ImageViewCompat
 import androidx.fragment.app.Fragment
+import com.example.mixer_logic_kt.R
 import com.example.mixer_logic_kt.Util.displayNullString
 import com.example.mixer_logic_kt.Util.joinWithAnd
 import com.example.mixer_logic_kt.Util.loadImage
@@ -74,10 +75,14 @@ class DrinkRecipeFragment : Fragment() {
         if (true){//dynamically set icon and tint of icon
 
             binding.likeDrinkImgView.setImageResource(R.drawable.ic_heart_outline)
-            ImageViewCompat.setImageTintList(binding.likeDrinkImgView, ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.design_default_color_secondary_variant)))
+            ImageViewCompat.setImageTintList(binding.likeDrinkImgView, ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
+                R.color.design_default_color_secondary_variant
+            )))
         }else{
             binding.likeDrinkImgView.setImageResource(R.drawable.ic_heart_filled)
-            ImageViewCompat.setImageTintList(binding.likeDrinkImgView, ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.warning_red)))
+            ImageViewCompat.setImageTintList(binding.likeDrinkImgView, ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
+                R.color.warning_red
+            )))
 
         }
 

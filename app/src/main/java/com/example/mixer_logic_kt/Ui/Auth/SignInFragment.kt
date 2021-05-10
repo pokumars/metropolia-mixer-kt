@@ -1,4 +1,4 @@
-package com.example.mixer_logic_kt
+package com.example.mixer_logic_kt.Ui.Auth
 
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.example.mixer_logic_kt.SignInFragmentDirections
+import com.example.mixer_logic_kt.Ui.Screens.TAG
 import com.example.mixer_logic_kt.databinding.FragmentSignInBinding
 
 
@@ -51,7 +53,8 @@ class SignInFragment : Fragment() {
 
         binding.signInBtn.setOnClickListener{
             //the original style from the code lab
-            val action = SignInFragmentDirections.actionSignInFragmentToRecipesTab()
+            val action =
+                SignInFragmentDirections.actionSignInFragmentToRecipesTab()
             binding.root.findNavController().navigate(action)
         }
 

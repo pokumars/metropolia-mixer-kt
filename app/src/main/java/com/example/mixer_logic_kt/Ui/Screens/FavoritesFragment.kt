@@ -1,4 +1,4 @@
-package com.example.mixer_logic_kt
+package com.example.mixer_logic_kt.Ui.Screens
 
 import android.os.Bundle
 import android.view.LayoutInflater
