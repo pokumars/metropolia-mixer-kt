@@ -9,9 +9,9 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mixer_logic_kt.FavoritesFragmentDirections
+import coil.load
 import com.example.mixer_logic_kt.R
-import com.example.mixer_logic_kt.Util.loadImage
+import com.example.mixer_logic_kt.Ui.Screens.FavoritesFragmentDirections
 import com.example.mixer_logic_kt.model.Drink
 
 class FavoritesAdapter (private val context: Context,
@@ -38,8 +38,8 @@ class FavoritesAdapter (private val context: Context,
     override fun onBindViewHolder(holder: DrinkViewHolder, position: Int) {
         val drink = dataset[position]
         holder.drinkNameTextView.text = drink.name.toUpperCase()
-        holder.drinkImage.loadImage(drink.imageUrl)
-
+        //holder.drinkImage.loadImage(drink.imageUrl)
+        holder.drinkImage.load(drink.imageUrl)
         holder.drinkCard.setOnClickListener {
             val action = FavoritesFragmentDirections.actionFavoritesFragmentToDrinkRecipeFragment2(drinkId = drink.id, drinkName = drink.name)
             holder.view.findNavController().navigate(action)

@@ -7,15 +7,16 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.lifecycle.LiveData
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mixer_logic_kt.AllDrinksFragmentDirections
+import coil.load
 import com.example.mixer_logic_kt.R
-import com.example.mixer_logic_kt.Util.loadImage
+import com.example.mixer_logic_kt.Ui.Screens.AllDrinksFragmentDirections
 import com.example.mixer_logic_kt.model.Drink
 
-class DrinkAdapter (private val context: Context,
-                    private val dataset: List<Drink>
+class DrinkAdapter(private val context: Context,
+                   private val dataset: LiveData<List<Drink>>
 ): RecyclerView.Adapter<DrinkAdapter.DrinkViewHolder>() {
 
     class DrinkViewHolder(val view: View): RecyclerView.ViewHolder(view) {
@@ -32,13 +33,14 @@ class DrinkAdapter (private val context: Context,
     }
 
     override fun getItemCount(): Int {
-        return dataset.size
+        return dataset.value?.size!!
     }
 
     override fun onBindViewHolder(holder: DrinkViewHolder, position: Int) {
-        val drink = dataset[position]
+        val drink = dataset.value?.get(position)!!
         holder.drinkNameTextView.text = drink.name.toUpperCase()
-        holder.drinkImage.loadImage(drink.imageUrl)
+        holder.drinkImage.load(drink.imageUrl)
+        //holder.drinkImage.loadImage(drink.imageUrl)
 
         holder.drinkCard.setOnClickListener {
             val action = AllDrinksFragmentDirections.actionAllDrinksFragmentToDrinkRecipeFragment(drinkId = drink.id, drinkName = drink.name)

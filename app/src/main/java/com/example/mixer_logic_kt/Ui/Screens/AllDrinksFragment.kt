@@ -5,11 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mixer_logic_kt.adapter.DrinkAdapter
 import com.example.mixer_logic_kt.databinding.FragmentAllDrinksBinding
-import com.example.mixer_logic_kt.testDataSource.SomeDrinks
+import com.example.mixer_logic_kt.model.DrinkViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,7 +26,9 @@ class AllDrinksFragment : Fragment() {
     private var _binding : FragmentAllDrinksBinding? = null
     private val binding get() = _binding!!
 
-    private val drinks = SomeDrinks().loadDrinks()
+    //private val drinks = SomeDrinks().loadDrinks()
+    private val sharedViewModel: DrinkViewModel by activityViewModels()
+
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -37,6 +40,7 @@ class AllDrinksFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+        sharedViewModel.setDrinks()
     }
 
     override fun onCreateView(
@@ -45,6 +49,7 @@ class AllDrinksFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
          _binding = FragmentAllDrinksBinding.inflate(inflater, container, false)
+
          val view = binding.root
         return view
     }
@@ -62,7 +67,7 @@ class AllDrinksFragment : Fragment() {
         }*/
         val recyclerView: RecyclerView = binding.recyclerView
 
-        recyclerView.adapter = DrinkAdapter(requireContext(), drinks)
+        recyclerView.adapter = DrinkAdapter(requireContext(), sharedViewModel.drinks)
         recyclerView.layoutManager = GridLayoutManager(this.requireContext(), 2)
 
         // Use this setting to improve performance if you know that changes
