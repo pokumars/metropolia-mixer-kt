@@ -17,6 +17,12 @@ class DrinkViewModel: ViewModel() {
     val user: LiveData<> = _user*/
 
     fun setDrinks() {
+       //SomeDrinks().loadNoDrinks()
         _drinks.value = localDrinks
+    }
+
+    fun setFavourites() {
+        //SomeDrinks().loadNoDrinks()
+        _favourites.value = localDrinks
     }
 }

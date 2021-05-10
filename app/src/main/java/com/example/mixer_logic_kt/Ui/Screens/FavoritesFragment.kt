@@ -5,11 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mixer_logic_kt.adapter.FavoritesAdapter
 import com.example.mixer_logic_kt.databinding.FragmentFavoritesBinding
-import com.example.mixer_logic_kt.testDataSource.SomeDrinks
+import com.example.mixer_logic_kt.model.DrinkViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,8 +26,10 @@ class FavoritesFragment : Fragment() {
     private var _binding :FragmentFavoritesBinding? = null
     private val binding get() = _binding!!
 
+    private val sharedViewModel: DrinkViewModel by activityViewModels()
+
     private lateinit var recyclerView: RecyclerView
-    private val drinks = SomeDrinks().loadNoDrinks() //SomeDrinks().loadDrinks()
+
     private lateinit var  adapter: FavoritesAdapter
 
     // TODO: Rename and change types of parameters
@@ -39,8 +42,8 @@ class FavoritesFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
-        adapter = FavoritesAdapter(requireContext(), drinks)
+        sharedViewModel.setFavourites()
+        //adapter = FavoritesAdapter(requireContext(), drinks)
     }
 
     override fun onCreateView(
@@ -66,7 +69,8 @@ class FavoritesFragment : Fragment() {
 }*/
         recyclerView = binding.favRecyclerView
 
-        recyclerView.adapter = adapter//FavoritesAdapter(requireContext(), drinks)
+
+        recyclerView.adapter = FavoritesAdapter(requireContext(), sharedViewModel.favourites)
         recyclerView.layoutManager = GridLayoutManager(this.requireContext(), 2)
 
         renderTextOrRecyclerView()
