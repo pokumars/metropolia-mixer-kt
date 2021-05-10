@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.example.mixer_logic_kt.SignInFragmentDirections
 import com.example.mixer_logic_kt.Ui.Screens.TAG
 import com.example.mixer_logic_kt.databinding.FragmentSignInBinding
 

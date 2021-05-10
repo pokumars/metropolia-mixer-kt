@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.example.mixer_logic_kt.ForgotPasswordFragmentDirections
 import com.example.mixer_logic_kt.databinding.FragmentForgotPasswordBinding
 
 // TODO: Rename parameter arguments, choose names that match
