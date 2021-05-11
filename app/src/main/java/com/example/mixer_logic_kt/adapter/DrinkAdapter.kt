@@ -13,10 +13,10 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.mixer_logic_kt.R
 import com.example.mixer_logic_kt.Ui.Screens.AllDrinksFragmentDirections
-import com.example.mixer_logic_kt.model.Drink
+import com.example.mixer_logic_kt.model.Drink2
 
 class DrinkAdapter(private val context: Context,
-                   private val dataset: LiveData<List<Drink>>
+                   private val dataset: LiveData<List<Drink2>>
 ): RecyclerView.Adapter<DrinkAdapter.DrinkViewHolder>() {
 
     class DrinkViewHolder(val view: View): RecyclerView.ViewHolder(view) {

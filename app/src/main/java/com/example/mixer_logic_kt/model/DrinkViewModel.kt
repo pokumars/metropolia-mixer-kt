@@ -12,12 +12,13 @@ import kotlinx.coroutines.launch
 
 class DrinkViewModel: ViewModel() {
     private val localDrinks = SomeDrinks().loadDrinks()
+    private val localDrinks2 = SomeDrinks().loadDrinks2()
 
-    private val _drinks = MutableLiveData<List<Drink>>()
-    val drinks: LiveData<List<Drink>> = _drinks
+    private val _drinks = MutableLiveData<List<Drink2>>()
+    val drinks: LiveData<List<Drink2>> = _drinks
 
-    private val _favourites =  MutableLiveData<List<Drink>>()
-    val favourites: LiveData<List<Drink>> = _favourites
+    private val _favourites =  MutableLiveData<List<Drink2>>()
+    val favourites: LiveData<List<Drink2>> = _favourites
 
     private val _temp =  MutableLiveData<String>()
     val temp: LiveData<String> = _temp
@@ -27,22 +28,32 @@ class DrinkViewModel: ViewModel() {
 
     fun setDrinks() {
        //SomeDrinks().loadNoDrinks()
-        _drinks.value = localDrinks
+        _drinks.value = localDrinks2
     }
 
     fun setFavourites() {
         //SomeDrinks().loadNoDrinks()
-        _favourites.value = localDrinks
+        _favourites.value = localDrinks2
     }
 
     private fun getDrinks() {
         viewModelScope.launch {
-            val listResult =  DrinksApi.retrofitService.getDrinks()
-            Log.d(TAG, listResult)
+
+            try {
+                // some code that can cause an exception.
+                val listResult =  DrinksApi.retrofitService.getDrinks()
+                Log.d(TAG, listResult.size.toString())
+                Log.d(TAG, listResult[0].toString())
+            }
+            catch (e: Exception) {
+                // handle the exception to avoid abrupt termination.
+                Log.d(TAG, "some error ---> $e")
+            }
         }
+
     }
 
     init {
-        getDrinks()
+        //getDrinks()
     }
 }

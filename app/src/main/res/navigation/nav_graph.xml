@@ -76,7 +76,7 @@
             tools:layout="@layout/fragment_drink_recipe">
             <argument
                 android:name="drinkId"
-                app:argType="integer" />
+                app:argType="string" />
             <argument
                 android:name="drinkName"
                 android:defaultValue="Drink"
@@ -101,7 +101,7 @@
             tools:layout="@layout/fragment_drink_recipe">
             <argument
                 android:name="drinkId"
-                app:argType="integer" />
+                app:argType="string" />
             <argument
                 android:name="drinkName"
                 android:defaultValue="Drink"

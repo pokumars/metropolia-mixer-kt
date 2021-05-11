@@ -15,8 +15,7 @@ import com.example.mixer_logic_kt.R
 import com.example.mixer_logic_kt.Util.displayNullString
 import com.example.mixer_logic_kt.Util.joinWithAnd
 import com.example.mixer_logic_kt.databinding.FragmentDrinkRecipeBinding
-import com.example.mixer_logic_kt.model.Drink
-import com.example.mixer_logic_kt.model.Ingredient
+import com.example.mixer_logic_kt.model.Drink2
 import com.example.mixer_logic_kt.testDataSource.SomeDrinks
 
 
@@ -35,8 +34,10 @@ class DrinkRecipeFragment : Fragment() {
     private var _binding : FragmentDrinkRecipeBinding? = null
     private val binding get() = _binding!!
 
-    private var drinkId: Int = 3
-    private var drink : Drink? =null
+    private val localDrinks2 = SomeDrinks().loadDrinks2()
+
+    private var drinkId: String = "3"
+    private var drink : Drink2? = null//localDrinks2[drinkId.toInt()]
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -49,7 +50,7 @@ class DrinkRecipeFragment : Fragment() {
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
-            drinkId = it.getInt(DRINKID)
+            drinkId = it.getString(DRINKID)!!
         }
     }
 
@@ -57,7 +58,7 @@ class DrinkRecipeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        drink = SomeDrinks().loadDrinks().find { it -> it.id == drinkId }
+        drink = SomeDrinks().loadDrinks2().find { it -> it.id == drinkId }
         // Inflate the layout for this fragment
         _binding = FragmentDrinkRecipeBinding.inflate(inflater, container, false)
         val view = binding.root
@@ -99,14 +100,14 @@ class DrinkRecipeFragment : Fragment() {
         _binding = null
     }
 
-    fun addIngredientView(ingredient: Ingredient) {
+    fun addIngredientView(ingredient: List<Any>) {
         val ingredientListLayout: LinearLayout = binding.ingredientsParentLayout
         val ingredientView: View = layoutInflater.inflate(R.layout.recipe_ingredient_layout, null, false)
 
         val amountTextView : TextView = ingredientView.findViewById(R.id.amount_tv)
         val ingNameTextView : TextView = ingredientView.findViewById(R.id.ing_name_tv)
-        amountTextView.text= "${displayNullString(ingredient.amount.toString())} ${displayNullString(ingredient.unitOfMeasurement)}"
-        ingNameTextView.text= "${displayNullString(ingredient.item)}"
+        amountTextView.text= "${displayNullString(ingredient[1].toString())} ${displayNullString(ingredient[2].toString())}"
+        ingNameTextView.text= "${displayNullString(ingredient[0].toString())}"
 
         ingredientListLayout.addView(ingredientView)
     }
@@ -122,7 +123,7 @@ class DrinkRecipeFragment : Fragment() {
         //give the list and index and then use the index with the avtual value to display the step
         drink?.steps?.withIndex()?.map {
             val stepTextView: TextView = layoutInflater.inflate(R.layout.step_tv_layout, null) as TextView
-            stepTextView.text= "${it.index + 1}. ${it.value.stepText}"
+            stepTextView.text= "${it.index + 1}. ${it.value}"
 
             stepsListLayout.addView(stepTextView)
         }
