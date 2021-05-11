@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mixer_logic_kt.adapter.DrinkAdapter
@@ -40,7 +41,7 @@ class AllDrinksFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-        sharedViewModel.setDrinks()
+        //sharedViewModel.setDrinks()
     }
 
     override fun onCreateView(
@@ -50,8 +51,7 @@ class AllDrinksFragment : Fragment() {
         // Inflate the layout for this fragment
          _binding = FragmentAllDrinksBinding.inflate(inflater, container, false)
 
-         val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onDestroyView() {
@@ -61,13 +61,13 @@ class AllDrinksFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        /*binding.toRecipeBtn.setOnClickListener{
-           val action = AllDrinksFragmentDirections.actionAllDrinksFragmentToDrinkRecipeFragment()
-            binding.root.findNavController().navigate(action)
-        }*/
+
         val recyclerView: RecyclerView = binding.recyclerView
 
-        recyclerView.adapter = DrinkAdapter(requireContext(), sharedViewModel.drinks)
+        sharedViewModel.drinks.observe(viewLifecycleOwner) { newList ->
+            recyclerView.adapter = DrinkAdapter(requireContext(), newList)
+        }
+
         recyclerView.layoutManager = GridLayoutManager(this.requireContext(), 2)
 
         // Use this setting to improve performance if you know that changes

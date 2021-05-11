@@ -1,8 +1,5 @@
 package com.example.mixer_logic_kt.Util
 
-import android.net.Uri
-import android.widget.ImageView
-
 
 fun joinWithAnd (theList: List<String>): String{
     var result = ""
@@ -17,9 +14,4 @@ fun joinWithAnd (theList: List<String>): String{
     return result
 }
 
-
-fun displayNullString (str: String?): String{
-    val result = if (str==null|| str=="null") "" else str
-    return result
-}
 

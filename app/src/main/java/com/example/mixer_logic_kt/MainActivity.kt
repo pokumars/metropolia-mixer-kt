@@ -31,9 +31,11 @@ class MainActivity : AppCompatActivity() {
 
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController)
 
+        //hide the bottom nav on some screens
         navController.addOnDestinationChangedListener{_, destination, _ ->
             if(destination.id == R.id.signInFragment ||  destination.id == R.id.startupFragment ||
                 destination.id == R.id.registerFragment || destination.id == R.id.forgotPasswordFragment
+                || destination.id == R.id.drinkRecipeFragment2 || destination.id == R.id.drinkRecipeFragment
                 || destination.id == R.id.guestWebViewFragment
                 ){
                 //hide bottomNavigationView

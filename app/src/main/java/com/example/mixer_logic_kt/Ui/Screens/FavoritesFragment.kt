@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mixer_logic_kt.adapter.FavoritesAdapter
@@ -30,8 +31,6 @@ class FavoritesFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
 
-    private lateinit var  adapter: FavoritesAdapter
-
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -42,7 +41,7 @@ class FavoritesFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-        sharedViewModel.setFavourites()
+        //sharedViewModel.setFavourites()
         //adapter = FavoritesAdapter(requireContext(), drinks)
     }
 
@@ -52,8 +51,7 @@ class FavoritesFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentFavoritesBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onDestroyView() {
@@ -69,14 +67,13 @@ class FavoritesFragment : Fragment() {
 }*/
         recyclerView = binding.favRecyclerView
 
+        //recyclerView.adapter = FavoritesAdapter(requireContext(), sharedViewModel.favourites)
+        sharedViewModel.favourites.observe(viewLifecycleOwner) { newList ->
+            recyclerView.adapter = FavoritesAdapter(requireContext(), newList)
+            renderTextOrRecyclerView()
+        }
 
-        recyclerView.adapter = FavoritesAdapter(requireContext(), sharedViewModel.favourites)
         recyclerView.layoutManager = GridLayoutManager(this.requireContext(), 2)
-
-        renderTextOrRecyclerView()
-        // Use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        recyclerView.setHasFixedSize(true)
     }
 
     //show the recyclerview or show text that says there are no favourites

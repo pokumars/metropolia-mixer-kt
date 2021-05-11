@@ -2,6 +2,7 @@ package com.example.mixer_logic_kt.Ui.Screens
 
 import android.content.res.ColorStateList
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,13 +11,13 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.widget.ImageViewCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import coil.load
 import com.example.mixer_logic_kt.R
-import com.example.mixer_logic_kt.Util.displayNullString
 import com.example.mixer_logic_kt.Util.joinWithAnd
 import com.example.mixer_logic_kt.databinding.FragmentDrinkRecipeBinding
 import com.example.mixer_logic_kt.model.Drink2
-import com.example.mixer_logic_kt.testDataSource.SomeDrinks
+import com.example.mixer_logic_kt.model.DrinkViewModel
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -30,11 +31,10 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class DrinkRecipeFragment : Fragment() {
+    private val sharedViewModel: DrinkViewModel by activityViewModels()
 
     private var _binding : FragmentDrinkRecipeBinding? = null
     private val binding get() = _binding!!
-
-    private val localDrinks2 = SomeDrinks().loadDrinks2()
 
     private var drinkId: String = "3"
     private var drink : Drink2? = null//localDrinks2[drinkId.toInt()]
@@ -58,19 +58,20 @@ class DrinkRecipeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        drink = SomeDrinks().loadDrinks2().find { it -> it.id == drinkId }
+        drink = sharedViewModel.drinks.value?.find { it -> it.id == drinkId }
         // Inflate the layout for this fragment
         _binding = FragmentDrinkRecipeBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.imageView.load(drink!!.imageUrl)
+        binding.imageView.load(drink?.imageUrl)
         binding.drinkNameTv.text= drink?.name.toString()
-        binding.drinkGarnishTv.text= joinWithAnd(drink?.garnish?.map { t -> "$t".capitalize() }!!)
+        binding.drinkGarnishTv.text= joinWithAnd(drink?.garnish?.map { t -> t.capitalize() }!!)
         binding.drinkGlassTv.text= drink?.glass.toString()
-        binding.drinkMethodTv.text=  joinWithAnd(drink?.method?.map { t -> "$t".capitalize() }!!)
+        binding.drinkMethodTv.text=  joinWithAnd(drink?.method?.map { t -> t.capitalize() }!!)
+
+        Log.d(TAG, "${drink?.name} clicked")
 
 
         if (true){//dynamically set icon and tint of icon
@@ -100,14 +101,19 @@ class DrinkRecipeFragment : Fragment() {
         _binding = null
     }
 
-    fun addIngredientView(ingredient: List<Any>) {
+    private fun addIngredientView(ingredient: List<Any>) {
         val ingredientListLayout: LinearLayout = binding.ingredientsParentLayout
         val ingredientView: View = layoutInflater.inflate(R.layout.recipe_ingredient_layout, null, false)
 
+        //handle scenario when amount or unit is null
+        val amount: String = if (ingredient[1] != null) ingredient[1].toString().substringBefore(".") else ""
+        val unitOfMeasurement: String = if (ingredient[2] != null) ingredient[2].toString() else ""
+
         val amountTextView : TextView = ingredientView.findViewById(R.id.amount_tv)
         val ingNameTextView : TextView = ingredientView.findViewById(R.id.ing_name_tv)
-        amountTextView.text= "${displayNullString(ingredient[1].toString())} ${displayNullString(ingredient[2].toString())}"
-        ingNameTextView.text= "${displayNullString(ingredient[0].toString())}"
+
+        amountTextView.text= "$amount $unitOfMeasurement"
+        ingNameTextView.text= ingredient[0].toString()
 
         ingredientListLayout.addView(ingredientView)
     }
@@ -117,8 +123,6 @@ class DrinkRecipeFragment : Fragment() {
     private fun populateStepViews () {
 
         val stepsListLayout: LinearLayout = binding.stepsParentLayout
-        //val stepTextView: TextView = layoutInflater.inflate(R.layout.step_tv_layout, null) as TextView
-
 
         //give the list and index and then use the index with the avtual value to display the step
         drink?.steps?.withIndex()?.map {
