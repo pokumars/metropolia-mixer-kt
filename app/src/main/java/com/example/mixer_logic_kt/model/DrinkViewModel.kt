@@ -11,7 +11,6 @@ import com.example.mixer_logic_kt.testDataSource.SomeDrinks
 import kotlinx.coroutines.launch
 
 class DrinkViewModel: ViewModel() {
-    private val localDrinks = SomeDrinks().loadDrinks()
     private val localDrinks2 = SomeDrinks().loadDrinks2()
     private val emptyLocalDrinks2 = SomeDrinks().loadNoDrinks2()
 
@@ -24,22 +23,15 @@ class DrinkViewModel: ViewModel() {
     private val _temp =  MutableLiveData<String>()
     val temp: LiveData<String> = _temp
 
-    /*private val _user = MutableLiveData<>()
-    val user: LiveData<> = _user*/
+    //user will be here. We will check for it in startup
 
+    private val _auth = MutableLiveData<Auth>()
+    val auth: LiveData<Auth> = _auth
+
+    //test to see if i can get a subset of the drinks which are the favourites
     val favIds = listOf<String>("606597a3761b364be86cc06d","6065980fc0eb384238391be0", "5f6e755ac12d131d00d75054")
 
-    private fun setDrinks() {
-       //SomeDrinks().loadNoDrinks()
-        //_drinks.value = localDrinks2
-        _drinks.value = emptyLocalDrinks2
-    }
-
-    private fun setFavourites() {
-        //SomeDrinks().loadNoDrinks()
-        _favourites.value = localDrinks2
-    }
-
+    //call this function when I have successfully logged in
     private fun getDrinks() {
         viewModelScope.launch {
 
@@ -53,13 +45,27 @@ class DrinkViewModel: ViewModel() {
             }
             catch (e: Exception) {
                 // handle the exception to avoid abrupt termination.
-                Log.d(TAG, "some error ---> $e")
+                Log.d(TAG, "Error in DrinkViewModel-->getDrinks $e")
             }
         }
 
     }
 
+    private fun login () {
+        viewModelScope.launch {
+            try {
+                //TODO remove
+                val loginResponse = DrinksApi.retrofitService.login(LoginRequestObj("", ""))
+                Log.d(TAG, loginResponse.toString())
+            }catch (e: Exception){
+                Log.d(TAG, "Error in DrinkViewModel--> login \n ------${e.message}")
+            }
+        }
+    }
+
+
     init {
-        getDrinks()
+        //getDrinks()
+        login ()
     }
 }

@@ -1,18 +1,11 @@
 package com.example.mixer_logic_kt.testDataSource
 
-import com.example.mixer_logic_kt.model.Drink
 import com.example.mixer_logic_kt.model.Drink2
 
 class SomeDrinks() {
-        fun loadNoDrinks(): List<Drink>{
-                return listOf<Drink>()
-        }
+
         fun loadNoDrinks2(): List<Drink2>{
                 return listOf<Drink2>()
-        }
-
-        fun loadDrinks(): List<Drink> {
-        return listOf<Drink>()
         }
 
         fun loadDrinks2(): List<Drink2> {
