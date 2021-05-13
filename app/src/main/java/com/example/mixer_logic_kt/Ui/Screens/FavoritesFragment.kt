@@ -1,6 +1,7 @@
 package com.example.mixer_logic_kt.Ui.Screens
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -67,13 +68,17 @@ class FavoritesFragment : Fragment() {
 }*/
         recyclerView = binding.favRecyclerView
 
-        //recyclerView.adapter = FavoritesAdapter(requireContext(), sharedViewModel.favourites)
         sharedViewModel.favourites.observe(viewLifecycleOwner) { newList ->
             recyclerView.adapter = FavoritesAdapter(requireContext(), newList)
             renderTextOrRecyclerView()
         }
 
         recyclerView.layoutManager = GridLayoutManager(this.requireContext(), 2)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "hwo many favs have been found? ${sharedViewModel.auth.value!!.user.favourites}")
     }
 
     //show the recyclerview or show text that says there are no favourites

@@ -1,13 +1,13 @@
 package com.example.mixer_logic_kt.model
 
 data class Auth(
-    val token: String,
-    val user: User
+    val user: User,
+    val token: String
 )
 
 data class User(
-    val email: String,
     val favourites: List<String>,
+    val email: String,
     val id: String,
     val myApprovedDrinkRecipes: List<String>,
     val myPendingDrinkRecipes: List<String>,
