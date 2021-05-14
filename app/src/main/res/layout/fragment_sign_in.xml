@@ -74,6 +74,7 @@ tools:context=".Ui.Auth.SignInFragment">
                    android:layout_marginHorizontal="25dp"
                    android:layout_height="wrap_content"
                    android:ems="10"
+                   tools:text="some_username"
                    android:inputType="textPersonName"
                    android:background="@drawable/input_background"
 
@@ -100,7 +101,8 @@ tools:context=".Ui.Auth.SignInFragment">
                    android:layout_marginHorizontal="25dp"
                    android:layout_height="wrap_content"
                    android:ems="10"
-                   android:inputType="textPersonName"
+                   tools:text="some_password"
+                   android:inputType="textPassword"
                    android:background="@drawable/input_background"
 
                    app:layout_constraintTop_toBottomOf="@id/password_input_label"

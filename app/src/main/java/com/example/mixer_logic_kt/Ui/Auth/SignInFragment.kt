@@ -57,6 +57,7 @@ class SignInFragment : Fragment() {
         }
 
         observeUserExistence()
+        observeSignInErrorMsg()
     }
 
     override fun onDestroyView() {
@@ -73,6 +74,12 @@ class SignInFragment : Fragment() {
                         SignInFragmentDirections.actionSignInFragmentToRecipesTab()
                 binding.root.findNavController().navigate(action)
             }
+        }
+    }
+
+    private fun observeSignInErrorMsg() {
+        sharedViewModel.signInErrorMessage.observe(viewLifecycleOwner) { errorMsg ->
+            binding.signInErrorMessage.text = errorMsg
         }
     }
 

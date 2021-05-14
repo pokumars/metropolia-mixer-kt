@@ -20,6 +20,9 @@ class DrinkViewModel: ViewModel() {
     private val _auth = MutableLiveData<Auth>()
     val auth: LiveData<Auth> = _auth
 
+    private val _signInErrorMessage = MutableLiveData<String>()
+    val signInErrorMessage: LiveData<String> = _signInErrorMessage
+
     //call this function when I have successfully logged in
     private fun getDrinks() {
         viewModelScope.launch {
@@ -47,7 +50,13 @@ class DrinkViewModel: ViewModel() {
                 _favourites.value = drinks.value?.filter { it -> loginResponse.user.favourites.contains(it.id) }
                 Log.d(TAG, loginResponse.toString())
             }catch (e: Exception){
-                Log.d(TAG, "Error in DrinkViewModel--> login \n ------${e.message}")
+                if(e.message!!.contains("HTTP 401 Unauthorized")){
+                    _signInErrorMessage.value="The password and username do not match"
+                } else if(e.message!!.contains("failed to connect")){
+                    _signInErrorMessage.value="failed to connect to the internet/server"
+                }else{
+                    _signInErrorMessage.value="Something unusual went wrong in connecting or in logging in"
+                }
             }
         }
     }
