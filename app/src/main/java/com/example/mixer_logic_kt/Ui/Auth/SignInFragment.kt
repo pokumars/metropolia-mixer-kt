@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.observe
 import androidx.navigation.findNavController
 import com.example.mixer_logic_kt.Ui.Screens.TAG
+import com.example.mixer_logic_kt.Util.hideKeyboardInFragment
 import com.example.mixer_logic_kt.databinding.FragmentSignInBinding
 import com.example.mixer_logic_kt.model.DrinkViewModel
 import com.example.mixer_logic_kt.model.LoginRequestObj
@@ -39,21 +40,11 @@ class SignInFragment : Fragment() {
             val userCredentials = LoginRequestObj(username, password)
 
             try {
+                hideKeyboardInFragment(requireContext(), it)
                 sharedViewModel.login(userCredentials)
             }catch (e: Exception){
                 Log.d(TAG,"Login failed --> $e")
             }
-        }
-
-        binding.forgotPasswordActionTextBtn.setOnClickListener{
-            //val action = SignInFragmentDirections.actionSignInFragmentToForgotPasswordFragment()
-            //binding.root.findNavController().navigate(action)
-            Log.d(TAG,"forgotPasswordActionTextBtn clicked")
-        }
-        binding.registerActionTextBtn.setOnClickListener{
-            //val action = SignInFragmentDirections.actionSignInFragmentToForgotPasswordFragment()
-            //binding.root.findNavController().navigate(action)
-            Log.d(TAG,"registerActionTextBtn clicked")
         }
 
         observeUserExistence()

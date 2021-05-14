@@ -124,50 +124,8 @@ tools:context=".Ui.Auth.SignInFragment">
                    app:layout_constraintStart_toStartOf="parent"
                    app:layout_constraintTop_toBottomOf="@+id/editText_password" />
 
-               <!-- Dont have account-->
-               <LinearLayout
-                   android:id="@+id/dont_have_acct_layout"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_marginTop="32dp"
-                   android:gravity="center"
-                   android:orientation="horizontal"
-                   app:layout_constraintEnd_toEndOf="parent"
-                   app:layout_constraintStart_toStartOf="parent"
-                   app:layout_constraintTop_toBottomOf="@+id/sign_in_btn">
 
-                   <TextView
 
-                       style="@style/Widget.MixerLogic.BasicText"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:paddingEnd="5dp"
-                       android:text="@string/dont_have_acct_txt" />
-
-                   <TextView
-                       android:id="@+id/register_action_text_btn"
-                       style="@style/Widget.MixerLogic.BasicText"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-
-                       android:paddingEnd="5dp"
-                       android:text="@string/register_action_txt"
-                       android:textColor="@color/design_default_color_secondary_variant" />
-
-               </LinearLayout>
-               <!-- Forgot password-->
-               <TextView
-                   android:id="@+id/forgot_password_action_text_btn"
-                   style="@style/Widget.MixerLogic.BasicText"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_marginTop="32dp"
-                   android:paddingEnd="5dp"
-                   android:text="@string/forgot_password_action_txt"
-                   android:textColor="@color/design_default_color_secondary_variant"
-                   app:layout_constraintEnd_toEndOf="parent"
-                   app:layout_constraintStart_toStartOf="parent"
-                   app:layout_constraintTop_toBottomOf="@id/dont_have_acct_layout" />
            </androidx.constraintlayout.widget.ConstraintLayout>
 
 

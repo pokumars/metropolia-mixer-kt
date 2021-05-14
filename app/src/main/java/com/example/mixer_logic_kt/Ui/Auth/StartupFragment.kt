@@ -20,7 +20,6 @@ private const val ARG_PARAM2 = "param2"
  */
 class StartupFragment : Fragment() {
     private var _binding : FragmentStartupBinding? = null
-
     private val binding get() = _binding!!
 
     // TODO: Rename and change types of parameters
@@ -40,8 +39,7 @@ class StartupFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
        _binding = FragmentStartupBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,12 +48,6 @@ class StartupFragment : Fragment() {
         binding.toSignInBtn.setOnClickListener{
             val action =
                 StartupFragmentDirections.actionStartupFragmentToSignInFragment()
-            binding.root.findNavController().navigate(action)
-        }
-
-        binding.toRegisterBtn.setOnClickListener{
-            val action =
-                StartupFragmentDirections.actionStartupFragmentToRegisterFragment()
             binding.root.findNavController().navigate(action)
         }
 
