@@ -29,6 +29,8 @@
             app:destination="@id/guestWebViewFragment" />
         <action
             android:id="@+id/action_startupFragment_to_recipes_tab"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"
             app:destination="@id/recipes_tab" />
     </fragment>
     <fragment
