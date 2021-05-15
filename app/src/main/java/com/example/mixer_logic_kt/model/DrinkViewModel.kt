@@ -36,7 +36,6 @@ class DrinkViewModel: ViewModel() {
                 Log.d(TAG, "Error in DrinkViewModel-->getDrinks $e")
             }
         }
-
     }
 
     fun login (credentials: LoginRequestObj) {
@@ -61,6 +60,13 @@ class DrinkViewModel: ViewModel() {
         }
     }
 
+    fun setFavourites(){
+        Log.d(TAG, "setFavourites() _drinks --> ${_drinks.value?.size}")
+        _favourites.value = drinks.value?.filter { it -> _auth.value!!.user.favourites.contains(it.id) }
+        Log.d(TAG, "setFavourites() __favourites --> ${_favourites.value?.size}")
+        Log.d(TAG, "setFavourites() _auth --> ${_auth.value}")
+    }
+
     //upon startup, checkForTokenAndGetUser
     fun getUserWithToken(token:String) {
         //check for token
@@ -70,10 +76,8 @@ class DrinkViewModel: ViewModel() {
             try {
                 val fetchUserResponse = DrinksApi.retrofitService.getUserObject("bearer $token")
                 Log.d(TAG, "${fetchUserResponse}")
+                //favourites will be populated due to favourites fragment observing any changes that occur in auth
                 _auth.value= Auth(fetchUserResponse, token)
-
-                //populate the favourites based on what is in the list of user favourites list
-                _favourites.value = drinks.value?.filter { it -> fetchUserResponse.favourites.contains(it.id) }
             }
             catch (e: Exception){
                 Log.e(TAG, "error in getUserWithToken --> ${e.message}")
@@ -90,6 +94,5 @@ class DrinkViewModel: ViewModel() {
 
     init {
         getDrinks()
-        //login ()
     }
 }

@@ -44,7 +44,11 @@ class FavoritesFragment : Fragment() {
 }*/
         recyclerView = binding.favRecyclerView
 
+        //whenever the user favourites changes, it should update the list of favourites
+        sharedViewModel.auth.observe(viewLifecycleOwner) { sharedViewModel.setFavourites() }
+
         sharedViewModel.favourites.observe(viewLifecycleOwner) { newList ->
+            Log.d(TAG, "favourites list size ${newList.size}")
             recyclerView.adapter = FavoritesAdapter(requireContext(), newList)
             renderTextOrRecyclerView()
         }
@@ -54,12 +58,12 @@ class FavoritesFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        Log.d(TAG, "how many favs have been found? ${sharedViewModel.auth.value!!.user.favourites}")
+        Log.d(TAG, "how many favs have been found? ${sharedViewModel.auth.value?.user?.favourites}")
     }
 
     //show the recyclerview or show text that says there are no favourites
     private fun renderTextOrRecyclerView() {
-        if(recyclerView.adapter?.itemCount!! < 1){
+        if((recyclerView.adapter?.itemCount ?: 0) < 1){
             //binding.favRecyclerView.visibility(View.VISIBLE)
             //binding.noFavTv
 

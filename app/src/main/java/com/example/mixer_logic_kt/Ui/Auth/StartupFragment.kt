@@ -83,7 +83,6 @@ class StartupFragment : Fragment() {
             if (authObj.user.id.isNotEmpty()) {
 
                 Log.d(TAG, "user gotten from the backend based on the existing token")
-
                 //navigate into the app
                 val action = StartupFragmentDirections.actionStartupFragmentToRecipesTab()
                 binding.root.findNavController().navigate(action)
