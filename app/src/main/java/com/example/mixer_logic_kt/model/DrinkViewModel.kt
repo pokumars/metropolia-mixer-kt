@@ -81,6 +81,11 @@ class DrinkViewModel: ViewModel() {
         }
     }
 
+    fun wipeUser() {
+        val emptyAuthObj = Auth(User(listOf(),"","", listOf(), listOf(),""), "")
+        _auth.value = emptyAuthObj
+    }
+
 
 
     init {

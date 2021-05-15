@@ -8,21 +8,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
 import com.example.mixer_logic_kt.R
 import com.example.mixer_logic_kt.databinding.FragmentProfileBinding
+import com.example.mixer_logic_kt.model.DrinkViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-const val TAG = "MainActivity-ProfileFr"
+const val TAG = "MainActivity"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProfileFragment : Fragment() {
+    private val sharedViewModel: DrinkViewModel by activityViewModels()
 
     private var _binding : FragmentProfileBinding? = null
     private val binding get() = _binding!!
@@ -30,16 +25,8 @@ class ProfileFragment : Fragment() {
     private lateinit var sharedPref: SharedPreferences
     private lateinit var editor: SharedPreferences.Editor
 
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
 
         sharedPref= requireActivity().getPreferences(Context.MODE_PRIVATE)
         editor= sharedPref.edit()
@@ -51,8 +38,7 @@ class ProfileFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -61,37 +47,23 @@ class ProfileFragment : Fragment() {
         binding.logOutTv.setOnClickListener{
             Log.d(TAG, "user clicked log out")
             clearToken()
+            logOut()
             //move to startup page and clear backstack
         }
     }
 
     private fun clearToken() {
         editor.putString(getString(R.string.cles_du_tresor), "")
-        editor.apply()
+        editor.commit()
+    }
+    private fun logOut() {
+        sharedViewModel.wipeUser()
+        val action = ProfileFragmentDirections.actionProfileFragmentToStartupFragment()
+        binding.root.findNavController().navigate(action)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProfileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProfileFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }

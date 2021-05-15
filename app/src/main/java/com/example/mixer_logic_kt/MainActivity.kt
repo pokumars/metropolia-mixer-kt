@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         //val appBarConfig by lazy { AppBarConfiguration(setOf(R.id.startupFragment, R.id.recipes_tab, R.id.favourites_tab, R.id.profile_tab)) }
 
         //decide which screens are designated as home
-        val appBarConfig by lazy { AppBarConfiguration(setOf(R.id.startupFragment, R.id.allDrinksFragment,R.id.favoritesFragment, R.id.profile_tab)) }
+        val appBarConfig by lazy { AppBarConfiguration(setOf(R.id.startupFragment, R.id.allDrinksFragment,R.id.favoritesFragment, R.id.profileFragment)) }
 
 
         setupActionBarWithNavController(navController, appBarConfig)
