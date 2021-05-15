@@ -66,19 +66,22 @@ class DrinkViewModel: ViewModel() {
         //check for token
         //if it exists login i.e fetch user object
         //if it doesnt exist move to sign in page
-
         viewModelScope.launch {
             try {
-                val fetchUserResponse: User = DrinksApi.retrofitService.getUserObject("bearer $token")
+                val fetchUserResponse = DrinksApi.retrofitService.getUserObject("bearer $token")
                 Log.d(TAG, "${fetchUserResponse}")
                 _auth.value= Auth(fetchUserResponse, token)
 
-            }catch (e: Exception){
+                //populate the favourites based on what is in the list of user favourites list
+                _favourites.value = drinks.value?.filter { it -> fetchUserResponse.favourites.contains(it.id) }
+            }
+            catch (e: Exception){
                 Log.e(TAG, "error in getUserWithToken --> ${e.message}")
             }
         }
-
     }
+
+
 
     init {
         getDrinks()
