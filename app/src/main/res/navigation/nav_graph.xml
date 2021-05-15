@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_startupFragment_to_guestWebViewFragment"
             app:destination="@id/guestWebViewFragment" />
+        <action
+            android:id="@+id/action_startupFragment_to_recipes_tab"
+            app:destination="@id/recipes_tab" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
@@ -88,6 +91,9 @@
             android:name="com.example.mixer_logic_kt.Ui.Screens.ProfileFragment"
             android:label="@string/profile_fragment_label"
             tools:layout="@layout/fragment_profile" />
+        <action
+            android:id="@+id/action_global_startupFragment"
+            app:destination="@id/startupFragment" />
     </navigation>
     <fragment
         android:id="@+id/guestWebViewFragment"

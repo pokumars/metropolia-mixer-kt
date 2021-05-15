@@ -26,49 +26,102 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <Button
-            android:layout_marginTop="30dp"
-            android:id="@+id/to_sign_in_btn"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/startup_loading_layout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/Widget.MixerLogic.RoundedButton"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="20dp"
-            android:background="@drawable/rounded_secondary"
-            android:minWidth="300dp"
-            android:text="to login"
-            app:backgroundTint="@null"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/splash_image_view" />
+            app:layout_constraintTop_toBottomOf="@+id/splash_image_view">
 
-        <Button
-            android:id="@+id/as_guest_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/outlined_secondary"
-            style="@style/Widget.MixerLogic.RoundedButton"
-            android:minWidth="300dp"
-            android:text="@string/as_guest_btn_txt"
-            android:textColor="@color/design_default_color_secondary_variant"
-            app:backgroundTint="@null"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/to_sign_in_btn" />
+            <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/pBar"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
+            <TextView
+                style="@style/Widget.MixerLogic.H4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/gathering_information"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/as_guest_btn" />
+
+            <TextView
+                style="@style/Widget.MixerLogic.BasicText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/spinner_lasts_too_long"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/as_guest_btn" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/app_entrance_buttons"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            style="@style/Widget.MixerLogic.BasicText"
-            android:text="@string/as_guest_explainer"
+            android:orientation="vertical"
+            android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/as_guest_btn" />
+            app:layout_constraintTop_toBottomOf="@+id/splash_image_view"
+            >
+
+            <Button
+                android:layout_marginTop="30dp"
+                android:id="@+id/to_sign_in_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MixerLogic.RoundedButton"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="20dp"
+                android:background="@drawable/rounded_secondary"
+                android:minWidth="300dp"
+                android:text="to login"
+                app:backgroundTint="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/splash_image_view" />
+
+            <Button
+                android:id="@+id/as_guest_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/outlined_secondary"
+                style="@style/Widget.MixerLogic.RoundedButton"
+                android:minWidth="300dp"
+                android:text="@string/as_guest_btn_txt"
+                android:textColor="@color/design_default_color_secondary_variant"
+                app:backgroundTint="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/to_sign_in_btn" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                style="@style/Widget.MixerLogic.BasicText"
+                android:text="@string/as_guest_explainer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/as_guest_btn" />
+        </LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

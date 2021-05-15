@@ -1,8 +1,8 @@
 package com.example.mixer_logic_kt.model
 
 data class Auth(
-    val user: User,
-    val token: String
+        var user: User,
+        val token: String
 )
 
 data class User(

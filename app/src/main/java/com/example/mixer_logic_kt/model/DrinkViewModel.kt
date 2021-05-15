@@ -17,7 +17,7 @@ class DrinkViewModel: ViewModel() {
     val favourites: LiveData<List<Drink2>> = _favourites
 
     //user will be here. We will check for it in startup
-    private val _auth = MutableLiveData<Auth>()
+    private var _auth = MutableLiveData<Auth>()
     val auth: LiveData<Auth> = _auth
 
     private val _signInErrorMessage = MutableLiveData<String>()
@@ -62,10 +62,22 @@ class DrinkViewModel: ViewModel() {
     }
 
     //upon startup, checkForTokenAndGetUser
-    fun checkForTokenAndGetUser() {
+    fun getUserWithToken(token:String) {
         //check for token
         //if it exists login i.e fetch user object
         //if it doesnt exist move to sign in page
+
+        viewModelScope.launch {
+            try {
+                val fetchUserResponse: User = DrinksApi.retrofitService.getUserObject("bearer $token")
+                Log.d(TAG, "${fetchUserResponse}")
+                _auth.value= Auth(fetchUserResponse, token)
+
+            }catch (e: Exception){
+                Log.e(TAG, "error in getUserWithToken --> ${e.message}")
+            }
+        }
+
     }
 
     init {

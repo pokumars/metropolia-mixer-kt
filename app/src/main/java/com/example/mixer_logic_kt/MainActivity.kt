@@ -10,6 +10,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.mixer_logic_kt.databinding.ActivityMainBinding
 
+
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
 
@@ -30,8 +31,6 @@ class MainActivity : AppCompatActivity() {
 
 
         setupActionBarWithNavController(navController, appBarConfig)
-
-
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController)
 
         //hide the bottom nav on some screens

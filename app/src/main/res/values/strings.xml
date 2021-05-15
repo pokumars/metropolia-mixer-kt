@@ -47,11 +47,13 @@
     <string name="garnish_txt">Garnish: </string>
     <string name="as_guest_explainer">* Continues as guest in browser</string>
     <string name="no_favorites">You have 0 liked drinks. Open a drink recipe and click the like button and it will appear here</string>
-    <string name="dont_have_acct_txt">Don\'t have an account?</string>
-    <string name="already_have_acct_txt">Already have an account?</string>
-    <string name="forgot_password_explainer"> Forgot your account\'s password? Enter your email address, and we\'ll send you a recovery link.</string>
+    <string name="spinner_lasts_too_long">If this spinner lasts for more than 10 seconds check your internet connection.</string>
+    <string name="gathering_information">Gathering Information...</string>
 
     <!--Placeholders -->
+
+    <!--Other -->
+    <string name="cles_du_tresor">jwt</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

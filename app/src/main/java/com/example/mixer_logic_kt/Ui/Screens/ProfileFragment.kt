@@ -1,11 +1,14 @@
 package com.example.mixer_logic_kt.Ui.Screens
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.mixer_logic_kt.R
 import com.example.mixer_logic_kt.databinding.FragmentProfileBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -24,6 +27,9 @@ class ProfileFragment : Fragment() {
     private var _binding : FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var sharedPref: SharedPreferences
+    private lateinit var editor: SharedPreferences.Editor
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -34,6 +40,9 @@ class ProfileFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+        sharedPref= requireActivity().getPreferences(Context.MODE_PRIVATE)
+        editor= sharedPref.edit()
     }
 
     override fun onCreateView(
@@ -51,7 +60,14 @@ class ProfileFragment : Fragment() {
 
         binding.logOutTv.setOnClickListener{
             Log.d(TAG, "user clicked log out")
+            clearToken()
+            //move to startup page and clear backstack
         }
+    }
+
+    private fun clearToken() {
+        editor.putString(getString(R.string.cles_du_tresor), "")
+        editor.apply()
     }
 
     override fun onDestroyView() {
