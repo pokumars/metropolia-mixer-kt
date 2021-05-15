@@ -64,9 +64,6 @@ class FavoritesFragment : Fragment() {
     //show the recyclerview or show text that says there are no favourites
     private fun renderTextOrRecyclerView() {
         if((recyclerView.adapter?.itemCount ?: 0) < 1){
-            //binding.favRecyclerView.visibility(View.VISIBLE)
-            //binding.noFavTv
-
             binding.favRecyclerView.visibility = View.GONE
             binding.noFavTv.visibility= View.VISIBLE
         }

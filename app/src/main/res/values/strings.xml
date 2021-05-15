@@ -49,6 +49,7 @@
     <string name="no_favorites">You have 0 liked drinks. Open a drink recipe and click the like button and it will appear here</string>
     <string name="spinner_lasts_too_long">If this spinner lasts for more than 10 seconds check your internet connection.</string>
     <string name="gathering_information">Gathering Information...</string>
+    <string name="search_drinks">search drinks</string>
 
     <!--Placeholders -->
 

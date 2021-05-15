@@ -1,6 +1,9 @@
 package com.example.mixer_logic_kt.Ui.Screens
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,38 +14,16 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mixer_logic_kt.adapter.DrinkAdapter
 import com.example.mixer_logic_kt.databinding.FragmentAllDrinksBinding
+import com.example.mixer_logic_kt.model.Drink2
 import com.example.mixer_logic_kt.model.DrinkViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AllDrinksFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AllDrinksFragment : Fragment() {
     private var _binding : FragmentAllDrinksBinding? = null
     private val binding get() = _binding!!
+    private var allDrinks: List<Drink2> = listOf()
 
-    //private val drinks = SomeDrinks().loadDrinks()
+
     private val sharedViewModel: DrinkViewModel by activityViewModels()
-
-
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-        //sharedViewModel.setDrinks()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,7 +31,7 @@ class AllDrinksFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
          _binding = FragmentAllDrinksBinding.inflate(inflater, container, false)
-
+        sharedViewModel.drinks.observe(viewLifecycleOwner) { newList ->  allDrinks= newList }
         return binding.root
     }
 
@@ -64,34 +45,32 @@ class AllDrinksFragment : Fragment() {
 
         val recyclerView: RecyclerView = binding.recyclerView
 
+        //recyclerView.adapter = DrinkAdapter(requireContext(), allDrinks)
         sharedViewModel.drinks.observe(viewLifecycleOwner) { newList ->
             recyclerView.adapter = DrinkAdapter(requireContext(), newList)
         }
+        //binding.drinkSearchEditText.
+        binding.drinkSearchEditText.addTextChangedListener(textWatcher)
 
         recyclerView.layoutManager = GridLayoutManager(this.requireContext(), 2)
-
-        // Use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        recyclerView.setHasFixedSize(true)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AllDrinksFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AllDrinksFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun findDrinksByName (drinksArr: List<Drink2>, searchText:String): List<Drink2>  {
+        Log.d(TAG, "drinksArr = ${drinksArr.size}")
+        return drinksArr.filter{ currDrink -> currDrink.name.toLowerCase().contains(searchText)}
+    }
+
+    private val textWatcher = object : TextWatcher {
+        override fun afterTextChanged(s: Editable?) {}
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        override fun onTextChanged(str: CharSequence?, start: Int, before: Int, count: Int) {
+            binding.recyclerView.adapter =
+                    DrinkAdapter(
+                            requireContext(),
+                            findDrinksByName(sharedViewModel.drinks.value!!, str.toString())
+                    )
+        }
     }
 }
+
+//(currDrink => currDrink.name.toLowerCase().indexOf(searchText.toLowerCase()) !== -1);
