@@ -32,7 +32,7 @@ interface DrinksApiService{
     @PUT("users/like-drink/{id}")
     suspend fun likeDrink(@Path("id") drinkId: String, @Header("Authorization") bearerToken: String): UpdatedUser
 
-    @PUT("users/like-drink/{id}")
+    @PUT("users/unlike-drink/{id}")
     suspend fun unlikeDrink(@Path("id") drinkId: String, @Header("Authorization") bearerToken: String): UpdatedUser
 }
 

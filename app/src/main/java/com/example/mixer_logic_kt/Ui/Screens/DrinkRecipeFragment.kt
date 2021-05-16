@@ -119,7 +119,7 @@ class DrinkRecipeFragment : Fragment() {
             ImageViewCompat.setImageTintList(binding.likeDrinkImgView, ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
                     R.color.warning_red
             )))
-
+            binding.likeDrinkImgView.setOnClickListener{sharedViewModel.unlikeDrink(drinkId, sharedViewModel.auth.value!!.token)}
         }
         else{
             //dynamically set icon and tint of icon

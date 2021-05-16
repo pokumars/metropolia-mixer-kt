@@ -101,6 +101,17 @@ class DrinkViewModel: ViewModel() {
             }
         }
     }
+    fun unlikeDrink(drinkId: String, token:String) {
+        viewModelScope.launch {
+            try {
+                val unlikeResponse = DrinksApi.retrofitService.unlikeDrink(drinkId, "bearer $token")
+
+                _auth.value = Auth(unlikeResponse.updatedUser, token)
+            }catch (e: Exception){
+                Log.d(TAG, "$e")
+            }
+        }
+    }
 
     init {
         getDrinks()
