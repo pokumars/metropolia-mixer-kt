@@ -1,17 +1,11 @@
 package com.example.mixer_logic_kt.network
 
-import com.example.mixer_logic_kt.model.Auth
-import com.example.mixer_logic_kt.model.Drink2
-import com.example.mixer_logic_kt.model.LoginRequestObj
-import com.example.mixer_logic_kt.model.User
+import com.example.mixer_logic_kt.model.*
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 
 private const val BASE_URL = "http://10.0.2.2:3003/api/"
@@ -35,7 +29,11 @@ interface DrinksApiService{
     @POST("users")
     suspend fun getUserObject(@Header("Authorization") bearerToken: String): User
 
+    @PUT("users/like-drink/{id}")
+    suspend fun likeDrink(@Path("id") drinkId: String, @Header("Authorization") bearerToken: String): UpdatedUser
 
+    @PUT("users/like-drink/{id}")
+    suspend fun unlikeDrink(@Path("id") drinkId: String, @Header("Authorization") bearerToken: String): UpdatedUser
 }
 
 object DrinksApi {

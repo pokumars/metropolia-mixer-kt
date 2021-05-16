@@ -61,10 +61,10 @@ class DrinkViewModel: ViewModel() {
     }
 
     fun setFavourites(){
-        Log.d(TAG, "setFavourites() _drinks --> ${_drinks.value?.size}")
+        //Log.d(TAG, "setFavourites() _drinks --> ${_drinks.value?.size}")
         _favourites.value = drinks.value?.filter { it -> _auth.value!!.user.favourites.contains(it.id) }
-        Log.d(TAG, "setFavourites() __favourites --> ${_favourites.value?.size}")
-        Log.d(TAG, "setFavourites() _auth --> ${_auth.value}")
+        //Log.d(TAG, "setFavourites() __favourites --> ${_favourites.value?.size}")
+        //Log.d(TAG, "setFavourites() _auth --> ${_auth.value}")
     }
 
     //upon startup, checkForTokenAndGetUser
@@ -90,7 +90,17 @@ class DrinkViewModel: ViewModel() {
         _auth.value = emptyAuthObj
     }
 
+    fun likeDrink(drinkId: String, token:String) {
+        viewModelScope.launch {
+            try {
+                val likeResponse = DrinksApi.retrofitService.likeDrink(drinkId, "bearer $token")
 
+                _auth.value = Auth(likeResponse.updatedUser, token)
+            }catch (e: Exception){
+                Log.d(TAG, "$e")
+            }
+        }
+    }
 
     init {
         getDrinks()

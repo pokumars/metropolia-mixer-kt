@@ -2,7 +2,6 @@ package com.example.mixer_logic_kt.Ui.Screens
 
 import android.content.res.ColorStateList
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.widget.ImageViewCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.observe
 import coil.load
 import com.example.mixer_logic_kt.R
 import com.example.mixer_logic_kt.Util.joinWithAnd
@@ -47,6 +47,7 @@ class DrinkRecipeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         drink = sharedViewModel.drinks.value?.find { it -> it.id == drinkId }
+
         // Inflate the layout for this fragment
         _binding = FragmentDrinkRecipeBinding.inflate(inflater, container, false)
         return binding.root
@@ -59,21 +60,7 @@ class DrinkRecipeFragment : Fragment() {
         binding.drinkGlassTv.text= drink?.glass.toString()
         binding.drinkMethodTv.text=  joinWithAnd(drink?.method?.map { t -> t.capitalize() }!!)
 
-        Log.d(TAG, "${drink?.name} clicked")
-
-
-        if (true){//dynamically set icon and tint of icon
-            binding.likeDrinkImgView.setImageResource(R.drawable.ic_heart_outline)
-            ImageViewCompat.setImageTintList(binding.likeDrinkImgView, ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
-                R.color.design_default_color_secondary_variant
-            )))
-        }else{
-            binding.likeDrinkImgView.setImageResource(R.drawable.ic_heart_filled)
-            ImageViewCompat.setImageTintList(binding.likeDrinkImgView, ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
-                R.color.warning_red
-            )))
-        }
-
+        observeFavourites()
         populateStepViews ()
 
         drink?.ingredients?.forEach {
@@ -119,6 +106,30 @@ class DrinkRecipeFragment : Fragment() {
         }
     }
 
+    private fun observeFavourites(){
+        sharedViewModel.auth.observe(viewLifecycleOwner) { _ ->
+            sharedViewModel.setFavourites()
+            setFavIconAndLikeFunction()
+        }
+    }
+
+    private fun setFavIconAndLikeFunction() {
+        if (sharedViewModel.auth.value!!.user.favourites.contains(drink?.id)){ //if it is a favourite
+            binding.likeDrinkImgView.setImageResource(R.drawable.ic_heart_filled)
+            ImageViewCompat.setImageTintList(binding.likeDrinkImgView, ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
+                    R.color.warning_red
+            )))
+
+        }
+        else{
+            //dynamically set icon and tint of icon
+            binding.likeDrinkImgView.setImageResource(R.drawable.ic_heart_outline)
+            ImageViewCompat.setImageTintList(binding.likeDrinkImgView, ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
+                    R.color.design_default_color_secondary_variant
+            )))
+            binding.likeDrinkImgView.setOnClickListener{sharedViewModel.likeDrink(drinkId, sharedViewModel.auth.value!!.token)}
+        }
+    }
 
 
     companion object {

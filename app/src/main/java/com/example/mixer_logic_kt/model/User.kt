@@ -13,3 +13,7 @@ data class User(
     val myPendingDrinkRecipes: List<String>,
     val username: String
 )
+
+data class UpdatedUser(
+        val updatedUser: User
+)

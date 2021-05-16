@@ -76,13 +76,13 @@ class StartupFragment : Fragment() {
     }
 
     private fun observeUserExistence() {
-        Log.d(TAG, "observeUserExistence, sharedViewModel.auth ${sharedViewModel.auth.value}")
+        //Log.d(TAG, "observeUserExistence, sharedViewModel.auth ${sharedViewModel.auth.value}")
         //observe whether user exists or not and let user into app based on that
         //as soon as the user is gotten from the backend based on the existing token
         sharedViewModel.auth.observe(viewLifecycleOwner) { authObj ->
             if (authObj.user.id.isNotEmpty()) {
 
-                Log.d(TAG, "user gotten from the backend based on the existing token")
+                //Log.d(TAG, "user gotten from the backend based on the existing token")
                 //navigate into the app
                 val action = StartupFragmentDirections.actionStartupFragmentToRecipesTab()
                 binding.root.findNavController().navigate(action)
