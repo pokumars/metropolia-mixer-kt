@@ -48,7 +48,7 @@ class GuestWebViewFragment : Fragment() {
         myWebView.settings.javaScriptEnabled = true
         myWebView.settings.domStorageEnabled = true
 
-        myWebView.loadUrl("https://mixerlogic.herokuapp.com")
+        myWebView.loadUrl("https://metropolia-mixer.herokuapp.com")
 
         // Force links and redirects to open in the WebView instead of in a browser
         myWebView.webViewClient = WebViewClient()
