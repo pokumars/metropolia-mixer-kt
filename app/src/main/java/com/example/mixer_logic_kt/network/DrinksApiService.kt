@@ -8,8 +8,8 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.*
 
 
-private const val BASE_URL = "http://10.0.2.2:3003/api/"
-//private const val BASE_URL = "https://metropolia-mixer.herokuapp.com/api/"
+//private const val BASE_URL = "http://10.0.2.2:3003/api/"
+private const val BASE_URL = "https://metropolia-mixer.herokuapp.com/api/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
