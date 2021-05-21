@@ -51,8 +51,6 @@ username: "testuser3"
 passcode: "p4ssw0rd3"
 }
 
-
-
 <h2 id="packages-frameworks"> Packages/frameworks used </h2>
 * [React](https://reactjs.org/)
 more to come
@@ -62,7 +60,8 @@ more to come
 Todo
 
 <h2 id="download-apk"> Download APK</h2>
-TODO: link to download apk
+follow this <a href="https://github.com/pokumars/metropolia-mixer-kt/blob/main/metropolia-mixer-kt.apk">link </a> and then click on the download button
+
 
 ### Note
 - the server goes into sleep mode when it hasnt been used for a while so the first request may take
