@@ -75,7 +75,7 @@ class DrinkViewModel: ViewModel() {
         viewModelScope.launch {
             try {
                 val fetchUserResponse = DrinksApi.retrofitService.getUserObject("bearer $token")
-                Log.d(TAG, "${fetchUserResponse}")
+                Log.d(TAG, "fetchUserResponse ---> $fetchUserResponse")
                 //favourites will be populated due to favourites fragment observing any changes that occur in auth
                 _auth.value= Auth(fetchUserResponse, token)
             }

@@ -20,11 +20,6 @@ import com.example.mixer_logic_kt.model.Drink2
 import com.example.mixer_logic_kt.model.DrinkViewModel
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DrinkRecipeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class DrinkRecipeFragment : Fragment() {
     private val sharedViewModel: DrinkViewModel by activityViewModels()
 

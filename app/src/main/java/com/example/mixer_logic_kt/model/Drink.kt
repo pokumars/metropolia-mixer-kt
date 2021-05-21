@@ -1,7 +1,5 @@
 package com.example.mixer_logic_kt.model
 
-import android.net.Uri
-
 data class Drink2(
     val alcohols: List<String>,
     val categories: List<String>,

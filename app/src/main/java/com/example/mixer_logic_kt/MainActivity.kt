@@ -52,22 +52,3 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }
-
-/*
-else if(destination.id == R.id.guestWebViewFragment){
-                //hide app bar and bottomNavigationView
-                actionBar?.hide()
-                binding.bottomNavigationView.visibility = View.GONE
-            }
-
- */
-
-/*
-       val appBarConfig by lazy { AppBarConfiguration(setOf(R.id.startupFragment, R.id.allDrinksFragment, R.id.favoritesFragment, R.id.profileFragment)) }
-       setupActionBarWithNavController(navController, appBarConfig)*/
-
-/*
-// Correct behaviour and did not have the back arrow thing; difference is using the tabs top level
-//instead of screen. In this one,	the subtabs dont get a back button
-val appBarConfig by lazy { AppBarConfiguration(setOf(R.id.startupFragment, R.id.recipes_tab, R.id.favourites_tab, R.id.profile_tab)) }
-setupActionBarWithNavController(navController, appBarConfig)*/
